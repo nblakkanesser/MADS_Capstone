@@ -1,0 +1,51 @@
+id,name,categories
+A1B0AD01-740C-41E7-8412-FBBEDD5F1443,ATM/Cash Machine,"['Convenience', 'Souvenirs and Supplies']"
+4E4D076A-6866-46C8-A28B-A129E2B8F3DB,Accessible Rooms,['Accessibility']
+04D29064-B9A1-4031-AD0E-98E31EF69604,Accessible Sites,['Accessibility']
+0E2B9B01-9AC3-4AAF-A801-8027314BE863,Airboat Launch,['Boating']
+B509969B-F06A-4DCC-BBB3-134964D896E2,Amphitheater,"['Interpretive', 'Recreation']"
+89397A1A-3517-4941-8D30-037856E9D063,Animal-Safe Food Storage,['Safety']
+64D6A0A9-8219-4B57-97A9-9DFB527831F8,Aquatic Invasive Species Inspection,['Boating']
+CBD31D2A-DD1A-4C5D-88C1-67B6B7147CE9,Assistive Listening Systems,['Accessibility']
+BD2D6111-3E55-4838-A943-66203D9D95D6,Assistive Listening Systems - T-Coil Compatible,['Accessibility']
+7DC6C690-2BC3-4344-9691-EF9FCFB6E506,Audio Description,['Accessibility']
+8BFB0FF0-0B32-402B-8B73-C8028E56501E,Audio Description - Live,['Accessibility']
+F4A842CB-C966-402E-BBD3-AB86EDCF8403,Automated Entrance,['Accessibility']
+03A732CF-E5FD-473D-A78B-BDC4D20721BF,Automated External Defibrillator (AED),"['Emergency', 'Safety']"
+B166EAD1-0D3E-4111-AE04-D5AB15DFDEDC,Baby Changing Station,['Convenience']
+7029B5F0-D918-4E8A-B066-6F221BB8C061,Backcountry Permits,['Permits and Passes']
+63734D6E-3330-4EED-B916-52B3F625A091,Beach/Water Access,['Recreation']
+CABB4B31-8D23-4560-B359-6A12AF5621A9,Bear Canister Purchase/Rental,"['Safety', 'Souvenirs and Supplies']"
+7C64C0C4-5535-4E78-A04C-F78EBBFC3DAD,Bear Spray Purchase/Rental,"['Safety', 'Souvenirs and Supplies']"
+20291812-E85C-4A84-B8A2-E31C8D149704,Benches/Seating,['Convenience']
+5BDFF349-2F74-490E-A33E-C35286152050,Bicycle - Rack,"['Biking', 'Recreation']"
+EDA44DDD-DC61-4EAE-84AD-78FA52D98406,Bicycle - Rental,"['Biking', 'Recreation', 'Transportation']"
+DBADDA45-B695-4214-98D7-D3F886489421,Bicycle - Repair,"['Biking', 'Emergency']"
+37E409E6-FD87-456F-8A29-7C8287220FBF,Bicycle - Sharing Station,"['Biking', 'Recreation', 'Transportation']"
+1FDBBA99-3E2C-4AAB-AEE3-35B015F744E7,Boat Ramp,"['Boating', 'Recreation']"
+FB1516EF-7AC9-4A58-B6CC-6F982890011B,Boat Rental,['Boating']
+27A7E3AB-CA53-41D3-AEDE-FBF74D20F023,Braille,['Accessibility']
+DA9F2E5C-E46B-4F62-893E-4364D35931DC,Bus/Shuttle Stop,['Transportation']
+73C1C87E-F4EC-464D-BAEE-1F95876C24F4,Canoe/Kayak/Small Boat Launch,"['Boating', 'Recreation']"
+3B84C2C8-E890-4EE5-B0E7-FA157EFD8DAC,Captioned Media,['Accessibility']
+48562BFB-834B-43F2-B865-E174C372032B,Cellular Signal,['Convenience']
+91062A96-BF79-4719-9679-BB5461B7620A,Dock/Pier,"['Accessibility', 'Boating', 'Recreation']"
+D81436AE-5DB6-462B-A4F2-1DC3780A06D9,Electric Car Charging Station,['Fuel']
+57E44FD1-410F-4488-A389-3D27E045CB79,Electrical Hookup - Boat/RV,['Boating']
+1C1B932D-32B6-4BAA-8AA6-497F08CC22BF,Electrical Outlet/Cell Phone Charging,['Convenience']
+AB14DDED-4C61-4842-9D1F-1C9578A10802,Elevator,['Accessibility']
+1D08E7AD-5634-4185-80F4-B4C3CB5BD927,Entrance Passes for Sale,['Permits and Passes']
+63C7E515-6380-4092-83ED-FE1177F72A36,Ferry - Passenger,['Transportation']
+BBB07B4A-2217-4FEA-AFD5-1E3B2ED674FF,Ferry - Vehicle,['Transportation']
+802BE109-511F-47D9-84D5-18DDA1C90771,Fire Extinguisher,"['Emergency', 'Safety']"
+0A4F29B3-7FC1-4D4A-BD71-3B7E08CD4BCC,Fire Pit,['Recreation']
+28BF85F5-E93F-4EF1-A89B-05C99FCD808A,Firewood For Sale/Available,['Souvenirs and Supplies']
+5BA727FA-943D-418D-A238-44127EBA6EDB,First Aid Kit Available,"['Emergency', 'Safety']"
+2DEE6458-72F8-4C97-9279-5C3E90B19888,First Aid/Medical Care Available,"['Emergency', 'Safety']"
+2F2EE214-4BAB-4132-AFE4-2F664E5E80C5,Fish-Cleaning Station,['Fishing']
+4ACBE3CB-3CBB-47B6-8223-A7EE0342DC6D,Fishing Licenses Issued,"['Fishing', 'Information Available', 'Souvenirs and Supplies']"
+383F944C-35BA-43E3-8EEA-24953836B8C5,Food/Drink - Bar/Alcohol For Sale,['Food']
+D0D77D00-38EA-40F2-91E3-5FDCE3932A49,Food/Drink - Cafeteria,['Food']
+5D1ADBE5-E75D-4657-9577-FB5A6A90C7F9,Food/Drink - Coffee,['Food']
+3B482494-83EF-48D9-A626-FC00EFD4F4A4,Food/Drink - Ice Cream,['Food']
+2F798138-5D0A-468E-96DA-0A07F03031B0,Food/Drink - Restaurant/Table Service,['Food']
