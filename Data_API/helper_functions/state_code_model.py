@@ -36,7 +36,7 @@ def generate_synthetic_states(raw_queries,state_codes,state_names,state_abbrevia
 
             output = query.format(entity=state_abbreviation)
             queries.append(output)
-            query_state.append(state_name)
+            query_state.append(state_abbreviation)
             query_state_code.append(state_code)
         
     data = {
