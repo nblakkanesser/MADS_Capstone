@@ -62,7 +62,7 @@ def get_parks(params):
     return parks
 
 # %%
-def generate_synthetic_states(raw_queries,park_codes,parks,park_abbreviations):
+def generate_synthetic_parks(raw_queries,park_codes,parks,park_abbreviations):
     """
     Creates synthetic query data that will be used as training data for a model that identifies the state being asked about in a query.
 
@@ -163,7 +163,7 @@ raw_queries = ['What can I do in {entity}?',
 
 # %%
 def trained_model():
-    synthetic_park_data = generate_synthetic_states(raw_queries,park_codes,parks,park_roots)
+    synthetic_park_data = generate_synthetic_parks(raw_queries,park_codes,parks,park_roots)
     model, vectorizer = train_model(synthetic_park_data)
     return model, vectorizer
 
