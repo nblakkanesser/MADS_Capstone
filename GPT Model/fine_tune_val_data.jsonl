@@ -1,0 +1,457 @@
+{"prompt": "What events are planned at Fort Union National Monument?", "completion": "endpoint: events"}
+{"prompt": "What events are happening at Yukon?", "completion": "endpoint: events"}
+{"prompt": "Describe Yukon - Charley Rivers National Preserve to me", "completion": "endpoint: parks"}
+{"prompt": "What are the current alerts for Fort Union Monument?", "completion": "endpoint: alerts"}
+{"prompt": "What is the entry fee for Mesa Verde National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Which state is Alibates located in?", "completion": "endpoint: parks"}
+{"prompt": "What fun things can I do at Mesa Verde?", "completion": "endpoint: activities"}
+{"prompt": "Tell me about the entrance fees for Manhattan Project National Historical Park", "completion": "endpoint: feespasses"}
+{"prompt": "What are the present alerts for Sequoia?", "completion": "endpoint: alerts"}
+{"prompt": "Can you provide the full name of Canyon de Chelly?", "completion": "endpoint: parks"}
+{"prompt": "What events can I attend at Roosevelt Campobello?", "completion": "endpoint: events"}
+{"prompt": "What can I do at Chamizal National Memorial?", "completion": "endpoint: activities"}
+{"prompt": "Where is Pinnacles located?", "completion": "endpoint: parks"}
+{"prompt": "Tell me about the entrance fees for The White House and President's Park", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any events at Yukon - Charley Rivers National Preserve?", "completion": "endpoint: events"}
+{"prompt": "What amenities exist at Honouliuli?", "completion": "endpoint: amenities"}
+{"prompt": "What are the present alerts for The White House and President's Park?", "completion": "endpoint: alerts"}
+{"prompt": "What is the address of Cumberland Island?", "completion": "endpoint: parks"}
+{"prompt": "What facilities are available at Washita?", "completion": "endpoint: amenities"}
+{"prompt": "What events are happening at Zion National Park?", "completion": "endpoint: events"}
+{"prompt": "Tell me the address of The White House Park", "completion": "endpoint: parks"}
+{"prompt": "Describe Manhattan Project to me", "completion": "endpoint: parks"}
+{"prompt": "What are the ticket prices for Wind Cave?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the top activities at Bryce Canyon National Park?", "completion": "endpoint: activities"}
+{"prompt": "How expensive is it to visit Fort Union National Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What activities are recommended at Bryce Canyon?", "completion": "endpoint: activities"}
+{"prompt": "What are the current alerts for Washita Battlefield National Historic Site?", "completion": "endpoint: alerts"}
+{"prompt": "What activities are recommended at Kalaupapa National Historical Park?", "completion": "endpoint: activities"}
+{"prompt": "What events are happening at The White House Park?", "completion": "endpoint: events"}
+{"prompt": "What kind of activities are there at Yukon?", "completion": "endpoint: activities"}
+{"prompt": "Tell me the address of Cumberland Island", "completion": "endpoint: parks"}
+{"prompt": "What is the cost of admission to Shiloh?", "completion": "endpoint: feespasses"}
+{"prompt": "Tell me about The White House and President's Park", "completion": "endpoint: parks"}
+{"prompt": "What is the full name of Jewel Cave?", "completion": "endpoint: parks"}
+{"prompt": "Which state is Wind Cave National Park located in?", "completion": "endpoint: parks"}
+{"prompt": "Tell me the address of Jewel Cave", "completion": "endpoint: parks"}
+{"prompt": "What are the present alerts for Nez Perce National Historical Park?", "completion": "endpoint: alerts"}
+{"prompt": "What are the current alerts for The White House Park?", "completion": "endpoint: alerts"}
+{"prompt": "Can you provide the full name of Martin Van Buren National Historic Site?", "completion": "endpoint: parks"}
+{"prompt": "What amenities should I expect at Canyon de Chelly National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "Are there any current alerts at Alibates?", "completion": "endpoint: alerts"}
+{"prompt": "Where is Canyon de Chelly National Monument located?", "completion": "endpoint: parks"}
+{"prompt": "What are the admission fees for The White House Park?", "completion": "endpoint: feespasses"}
+{"prompt": "In which state can I find Whitman Mission?", "completion": "endpoint: parks"}
+{"prompt": "What upcoming events are scheduled at The White House and President's Park?", "completion": "endpoint: events"}
+{"prompt": "What activities are recommended at Chamizal National Memorial?", "completion": "endpoint: activities"}
+{"prompt": "What recreational activities are offered at Honouliuli?", "completion": "endpoint: activities"}
+{"prompt": "Which state is Washita located in?", "completion": "endpoint: parks"}
+{"prompt": "Describe Chamizal National Memorial to me", "completion": "endpoint: parks"}
+{"prompt": "What conveniences are available at Canyon de Chelly National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "What are the present alerts for Fort Union Monument?", "completion": "endpoint: alerts"}
+{"prompt": "What events are planned at Roosevelt Campobello International Park?", "completion": "endpoint: events"}
+{"prompt": "What events are planned at Gettysburg National Military Park?", "completion": "endpoint: events"}
+{"prompt": "What are the top activities at Shiloh?", "completion": "endpoint: activities"}
+{"prompt": "Are there any fees to visit Gettysburg National Military Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the present alerts for Chamizal National Memorial?", "completion": "endpoint: alerts"}
+{"prompt": "What amenities does Manhattan Project have?", "completion": "endpoint: amenities"}
+{"prompt": "What amenities exist at Washita?", "completion": "endpoint: amenities"}
+{"prompt": "What recreational activities are offered at Zion National Park?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are available at Nez Perce?", "completion": "endpoint: amenities"}
+{"prompt": "What services and facilities does Shiloh offer?", "completion": "endpoint: amenities"}
+{"prompt": "What are the admission fees for Martin Van Buren National Historic Site?", "completion": "endpoint: feespasses"}
+{"prompt": "What amenities should I expect at Roosevelt Campobello?", "completion": "endpoint: amenities"}
+{"prompt": "What are the current alerts for Whitman Mission National Historic Site?", "completion": "endpoint: alerts"}
+{"prompt": "Which state is Chamizal located in?", "completion": "endpoint: parks"}
+{"prompt": "How much does it cost to get into Whitman Mission National Historic Site?", "completion": "endpoint: feespasses"}
+{"prompt": "Tell me about the entrance fees for Alibates", "completion": "endpoint: feespasses"}
+{"prompt": "What outdoor activities can I enjoy at Gettysburg National Military Park?", "completion": "endpoint: activities"}
+{"prompt": "Describe Mesa Verde National Park to me", "completion": "endpoint: parks"}
+{"prompt": "What are the ongoing alerts at Whitman Mission National Historic Site?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any events at Honouliuli National Historic Site?", "completion": "endpoint: events"}
+{"prompt": "Are there any special events at Shiloh National Military Park?", "completion": "endpoint: events"}
+{"prompt": "Can you provide the active alerts for Yukon?", "completion": "endpoint: alerts"}
+{"prompt": "What kind of amenities can I find at Gettysburg?", "completion": "endpoint: amenities"}
+{"prompt": "How expensive is it to visit Jewel Cave National Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What activities and events are there at Wind Cave?", "completion": "endpoint: events"}
+{"prompt": "What amenities should I expect at Cumberland Island?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about Shiloh National Military Park", "completion": "endpoint: parks"}
+{"prompt": "What are the current alerts for Pinnacles?", "completion": "endpoint: alerts"}
+{"prompt": "Give me a description of Mesa Verde National Park", "completion": "endpoint: parks"}
+{"prompt": "What can I do at Kalaupapa?", "completion": "endpoint: activities"}
+{"prompt": "What events are planned at Alibates?", "completion": "endpoint: events"}
+{"prompt": "Can you provide the active alerts for The White House Park?", "completion": "endpoint: alerts"}
+{"prompt": "What are the current alerts for Bryce Canyon National Park?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any fees to visit Jewel Cave?", "completion": "endpoint: feespasses"}
+{"prompt": "Which state is Honouliuli located in?", "completion": "endpoint: parks"}
+{"prompt": "What are the top activities at Whitman Mission National Historic Site?", "completion": "endpoint: activities"}
+{"prompt": "Are there any fees to visit Fort Union Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What recreational activities are offered at Hovenweep?", "completion": "endpoint: activities"}
+{"prompt": "Do I need to pay to enter Cumberland Island National Seashore?", "completion": "endpoint: feespasses"}
+{"prompt": "What upcoming events are scheduled at Hovenweep National Monument?", "completion": "endpoint: events"}
+{"prompt": "What activities are recommended at Zion National Park?", "completion": "endpoint: activities"}
+{"prompt": "What events are planned at Zion?", "completion": "endpoint: events"}
+{"prompt": "What events are currently happening at Shiloh?", "completion": "endpoint: events"}
+{"prompt": "What activities and events are there at The White House Park?", "completion": "endpoint: events"}
+{"prompt": "List the active alerts at Zion", "completion": "endpoint: alerts"}
+{"prompt": "What is the address of Kalaupapa National Historical Park?", "completion": "endpoint: parks"}
+{"prompt": "Are there any fees to visit Alibates Flint Quarries National Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What kind of events are held at Shiloh National Military Park?", "completion": "endpoint: events"}
+{"prompt": "What kind of amenities can I find at Chamizal National Memorial?", "completion": "endpoint: amenities"}
+{"prompt": "What kind of events are held at Chamizal National Memorial?", "completion": "endpoint: events"}
+{"prompt": "What amenities exist at Yukon - Charley Rivers National Preserve?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me the active alerts at Alibates Flint Quarries National Monument", "completion": "endpoint: alerts"}
+{"prompt": "What are the admission fees for Hovenweep?", "completion": "endpoint: feespasses"}
+{"prompt": "Tell me about the entrance fees for Chamizal National Memorial", "completion": "endpoint: feespasses"}
+{"prompt": "What upcoming events are scheduled at Chamizal National Memorial?", "completion": "endpoint: events"}
+{"prompt": "Are there any special events at Jewel Cave?", "completion": "endpoint: events"}
+{"prompt": "What amenities should I expect at Honouliuli?", "completion": "endpoint: amenities"}
+{"prompt": "What fun things can I do at Chamizal?", "completion": "endpoint: activities"}
+{"prompt": "Tell me about the amenities at Chamizal National Memorial", "completion": "endpoint: amenities"}
+{"prompt": "Are there any charges to access Chamizal National Memorial?", "completion": "endpoint: feespasses"}
+{"prompt": "How much does it cost to get into Fort Union National Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What outdoor activities can I enjoy at Gettysburg?", "completion": "endpoint: activities"}
+{"prompt": "Tell me about the entrance fees for Martin Van Buren National Historic Site", "completion": "endpoint: feespasses"}
+{"prompt": "What are the present alerts for Jewel Cave National Monument?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any special events at Bryce Canyon?", "completion": "endpoint: events"}
+{"prompt": "Tell me the address of Mesa Verde National Park", "completion": "endpoint: parks"}
+{"prompt": "What upcoming events are scheduled at Yukon?", "completion": "endpoint: events"}
+{"prompt": "What are the top activities at Washita Battlefield National Historic Site?", "completion": "endpoint: activities"}
+{"prompt": "Tell me the active alerts at Washita Battlefield National Historic Site", "completion": "endpoint: alerts"}
+{"prompt": "What activities are recommended at Yukon - Charley Rivers National Preserve?", "completion": "endpoint: activities"}
+{"prompt": "What amenities should I expect at Bryce Canyon?", "completion": "endpoint: amenities"}
+{"prompt": "What amenities does Alibates Flint Quarries National Monument have?", "completion": "endpoint: amenities"}
+{"prompt": "How expensive is it to visit Kalaupapa National Historical Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Tell me about the activities available at Roosevelt Campobello", "completion": "endpoint: activities"}
+{"prompt": "What amenities exist at Fort Union National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "What outdoor activities can I enjoy at Fort Union National Monument?", "completion": "endpoint: activities"}
+{"prompt": "Are there any charges to access Jewel Cave National Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the location of Martin Van Buren?", "completion": "endpoint: parks"}
+{"prompt": "Can you provide the full name of Mesa Verde?", "completion": "endpoint: parks"}
+{"prompt": "What activities can I do at Mesa Verde?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are available at Manhattan Project National Historical Park?", "completion": "endpoint: amenities"}
+{"prompt": "What can I do at Cumberland Island?", "completion": "endpoint: activities"}
+{"prompt": "What activities can I do at Hovenweep National Monument?", "completion": "endpoint: activities"}
+{"prompt": "What is the entry fee for Mesa Verde?", "completion": "endpoint: feespasses"}
+{"prompt": "What kind of amenities can I find at Jewel Cave National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the events at Mesa Verde", "completion": "endpoint: events"}
+{"prompt": "What events are planned at Jewel Cave National Monument?", "completion": "endpoint: events"}
+{"prompt": "Can you provide the full name of The White House Park?", "completion": "endpoint: parks"}
+{"prompt": "What are the top activities at The White House Park?", "completion": "endpoint: activities"}
+{"prompt": "Can you provide the active alerts for Bryce Canyon?", "completion": "endpoint: alerts"}
+{"prompt": "What is the cost of admission to Hovenweep?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the current alerts for Sequoia?", "completion": "endpoint: alerts"}
+{"prompt": "Give me a description of Yukon - Charley Rivers National Preserve", "completion": "endpoint: parks"}
+{"prompt": "What recreational activities are offered at Hovenweep National Monument?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are provided at Fort Union National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "What are the top activities at Roosevelt Campobello International Park?", "completion": "endpoint: activities"}
+{"prompt": "What activities are recommended at Manhattan Project National Historical Park?", "completion": "endpoint: activities"}
+{"prompt": "What is the address of Pinnacles National Park?", "completion": "endpoint: parks"}
+{"prompt": "What is the address of Shiloh National Military Park?", "completion": "endpoint: parks"}
+{"prompt": "What is the full name of Chamizal?", "completion": "endpoint: parks"}
+{"prompt": "List the active alerts at Mesa Verde", "completion": "endpoint: alerts"}
+{"prompt": "Tell me about Pinnacles", "completion": "endpoint: parks"}
+{"prompt": "Tell me about Whitman Mission National Historic Site", "completion": "endpoint: parks"}
+{"prompt": "In which state can I find Yukon?", "completion": "endpoint: parks"}
+{"prompt": "What recreational activities are offered at Chamizal?", "completion": "endpoint: activities"}
+{"prompt": "What is the location of Whitman Mission National Historic Site?", "completion": "endpoint: parks"}
+{"prompt": "Can you provide the active alerts for Kalaupapa?", "completion": "endpoint: alerts"}
+{"prompt": "What are the ticket prices for Mesa Verde?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the location of Hovenweep?", "completion": "endpoint: parks"}
+{"prompt": "What kind of events are held at Alibates Flint Quarries National Monument?", "completion": "endpoint: events"}
+{"prompt": "Tell me about the activities available at Pinnacles National Park", "completion": "endpoint: activities"}
+{"prompt": "What is the cost of admission to The White House Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Which state is Bryce Canyon located in?", "completion": "endpoint: parks"}
+{"prompt": "What is the entry fee for Gettysburg National Military Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the admission fees for Canyon de Chelly?", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any events at Manhattan Project?", "completion": "endpoint: events"}
+{"prompt": "What activities and events are there at Nez Perce National Historical Park?", "completion": "endpoint: events"}
+{"prompt": "Tell me about Wind Cave National Park", "completion": "endpoint: parks"}
+{"prompt": "Give me a description of Martin Van Buren", "completion": "endpoint: parks"}
+{"prompt": "Tell me about the amenities at Zion", "completion": "endpoint: amenities"}
+{"prompt": "Where is Pinnacles National Park located?", "completion": "endpoint: parks"}
+{"prompt": "What amenities should I expect at Pinnacles National Park?", "completion": "endpoint: amenities"}
+{"prompt": "What can I do at Manhattan Project?", "completion": "endpoint: activities"}
+{"prompt": "What amenities should I expect at Zion National Park?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the activities available at The White House and President's Park", "completion": "endpoint: activities"}
+{"prompt": "How much does it cost to get into Pinnacles?", "completion": "endpoint: feespasses"}
+{"prompt": "Do I need to pay to enter The White House Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any charges to access Yukon?", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any alerts at Cumberland Island National Seashore?", "completion": "endpoint: alerts"}
+{"prompt": "Tell me about the activities available at Zion", "completion": "endpoint: activities"}
+{"prompt": "What are the present alerts for Whitman Mission?", "completion": "endpoint: alerts"}
+{"prompt": "What is the cost of admission to Nez Perce National Historical Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Tell me the address of Whitman Mission National Historic Site", "completion": "endpoint: parks"}
+{"prompt": "What are the top activities at Whitman Mission?", "completion": "endpoint: activities"}
+{"prompt": "Which alerts are active in Zion National Park right now?", "completion": "endpoint: alerts"}
+{"prompt": "What is the location of The White House Park?", "completion": "endpoint: parks"}
+{"prompt": "What is the location of Gettysburg National Military Park?", "completion": "endpoint: parks"}
+{"prompt": "Tell me about the activities available at Fort Union National Monument", "completion": "endpoint: activities"}
+{"prompt": "Where is Sequoia located?", "completion": "endpoint: parks"}
+{"prompt": "List the active alerts at Jewel Cave National Monument", "completion": "endpoint: alerts"}
+{"prompt": "What are the admission fees for Wind Cave?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the current alerts for Kalaupapa?", "completion": "endpoint: alerts"}
+{"prompt": "Tell me about the amenities at Whitman Mission National Historic Site", "completion": "endpoint: amenities"}
+{"prompt": "What upcoming events are scheduled at The White House Park?", "completion": "endpoint: events"}
+{"prompt": "What are the current alerts for Hovenweep National Monument?", "completion": "endpoint: alerts"}
+{"prompt": "Can you provide the full name of Manhattan Project National Historical Park?", "completion": "endpoint: parks"}
+{"prompt": "Are there any events at Jewel Cave National Monument?", "completion": "endpoint: events"}
+{"prompt": "Are there any current alerts at Alibates Flint Quarries National Monument?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any alerts at Martin Van Buren National Historic Site?", "completion": "endpoint: alerts"}
+{"prompt": "What activities are recommended at Wind Cave?", "completion": "endpoint: activities"}
+{"prompt": "What are the admission fees for Manhattan Project?", "completion": "endpoint: feespasses"}
+{"prompt": "Which alerts are active in Manhattan Project right now?", "completion": "endpoint: alerts"}
+{"prompt": "Describe Martin Van Buren National Historic Site to me", "completion": "endpoint: parks"}
+{"prompt": "Are there any fees to visit Washita?", "completion": "endpoint: feespasses"}
+{"prompt": "Which state is Zion located in?", "completion": "endpoint: parks"}
+{"prompt": "What amenities exist at Martin Van Buren National Historic Site?", "completion": "endpoint: amenities"}
+{"prompt": "What is the location of Pinnacles National Park?", "completion": "endpoint: parks"}
+{"prompt": "Where is Shiloh located?", "completion": "endpoint: parks"}
+{"prompt": "What events can I attend at Hovenweep National Monument?", "completion": "endpoint: events"}
+{"prompt": "What amenities exist at Jewel Cave National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "Do I need to pay to enter Bryce Canyon?", "completion": "endpoint: feespasses"}
+{"prompt": "How expensive is it to visit Roosevelt Campobello?", "completion": "endpoint: feespasses"}
+{"prompt": "List the activities at Martin Van Buren", "completion": "endpoint: activities"}
+{"prompt": "Tell me about the amenities at Gettysburg", "completion": "endpoint: amenities"}
+{"prompt": "What events are planned at Hovenweep?", "completion": "endpoint: events"}
+{"prompt": "What activities and events are there at Whitman Mission?", "completion": "endpoint: events"}
+{"prompt": "Which alerts are active in Whitman Mission right now?", "completion": "endpoint: alerts"}
+{"prompt": "Can you provide the active alerts for Sequoia & Kings Canyon National Parks?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any fees to visit Martin Van Buren?", "completion": "endpoint: feespasses"}
+{"prompt": "What activities are recommended at Whitman Mission National Historic Site?", "completion": "endpoint: activities"}
+{"prompt": "What upcoming events are scheduled at Kalaupapa National Historical Park?", "completion": "endpoint: events"}
+{"prompt": "What activities can I do at The White House and President's Park?", "completion": "endpoint: activities"}
+{"prompt": "What amenities should I expect at Mesa Verde National Park?", "completion": "endpoint: amenities"}
+{"prompt": "What outdoor activities can I enjoy at Roosevelt Campobello?", "completion": "endpoint: activities"}
+{"prompt": "What are the current alerts for Zion?", "completion": "endpoint: alerts"}
+{"prompt": "What fun things can I do at The White House and President's Park?", "completion": "endpoint: activities"}
+{"prompt": "What are the present alerts for Martin Van Buren?", "completion": "endpoint: alerts"}
+{"prompt": "How much does it cost to get into Washita Battlefield National Historic Site?", "completion": "endpoint: feespasses"}
+{"prompt": "Which alerts are active in Chamizal right now?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any charges to access Bryce Canyon National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any special events at Cumberland Island National Seashore?", "completion": "endpoint: events"}
+{"prompt": "Tell me about the amenities at Zion National Park", "completion": "endpoint: amenities"}
+{"prompt": "Which alerts are active in Nez Perce National Historical Park right now?", "completion": "endpoint: alerts"}
+{"prompt": "What facilities are provided at Shiloh?", "completion": "endpoint: amenities"}
+{"prompt": "Where is Manhattan Project National Historical Park located?", "completion": "endpoint: parks"}
+{"prompt": "What outdoor activities can I enjoy at Chamizal?", "completion": "endpoint: activities"}
+{"prompt": "Give me a description of Canyon de Chelly National Monument", "completion": "endpoint: parks"}
+{"prompt": "What activities can I do at Chamizal National Memorial?", "completion": "endpoint: activities"}
+{"prompt": "Do I need to pay to enter Kalaupapa National Historical Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the current alerts for Alibates Flint Quarries National Monument?", "completion": "endpoint: alerts"}
+{"prompt": "What kind of events are held at Manhattan Project National Historical Park?", "completion": "endpoint: events"}
+{"prompt": "What services and facilities does Honouliuli offer?", "completion": "endpoint: amenities"}
+{"prompt": "Describe Sequoia to me", "completion": "endpoint: parks"}
+{"prompt": "What events are happening at Washita Battlefield National Historic Site?", "completion": "endpoint: events"}
+{"prompt": "What activities can I do at Roosevelt Campobello?", "completion": "endpoint: activities"}
+{"prompt": "What is the address of Alibates?", "completion": "endpoint: parks"}
+{"prompt": "What activities can I do at Nez Perce?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are available at Jewel Cave?", "completion": "endpoint: amenities"}
+{"prompt": "What amenities exist at Alibates Flint Quarries National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "How expensive is it to visit Mesa Verde National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "How much does it cost to get into Fort Union Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What can I do at Alibates Flint Quarries National Monument?", "completion": "endpoint: activities"}
+{"prompt": "What is the entry fee for Wind Cave?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the full name of Martin Van Buren?", "completion": "endpoint: parks"}
+{"prompt": "What amenities does Hovenweep have?", "completion": "endpoint: amenities"}
+{"prompt": "Are there any current alerts at Shiloh?", "completion": "endpoint: alerts"}
+{"prompt": "What can I do at Martin Van Buren?", "completion": "endpoint: activities"}
+{"prompt": "Are there any events at Gettysburg National Military Park?", "completion": "endpoint: events"}
+{"prompt": "Tell me about the amenities at Cumberland Island", "completion": "endpoint: amenities"}
+{"prompt": "What is the full name of Kalaupapa National Historical Park?", "completion": "endpoint: parks"}
+{"prompt": "What events are currently happening at Nez Perce?", "completion": "endpoint: events"}
+{"prompt": "What amenities should I expect at Martin Van Buren National Historic Site?", "completion": "endpoint: amenities"}
+{"prompt": "What is the address of Honouliuli National Historic Site?", "completion": "endpoint: parks"}
+{"prompt": "Tell me the address of Nez Perce", "completion": "endpoint: parks"}
+{"prompt": "Are there any current alerts at Wind Cave?", "completion": "endpoint: alerts"}
+{"prompt": "What facilities are available at Shiloh National Military Park?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the amenities at Whitman Mission", "completion": "endpoint: amenities"}
+{"prompt": "What are the present alerts for Canyon de Chelly?", "completion": "endpoint: alerts"}
+{"prompt": "What amenities does Jewel Cave have?", "completion": "endpoint: amenities"}
+{"prompt": "What is the cost of admission to Honouliuli?", "completion": "endpoint: feespasses"}
+{"prompt": "List the active alerts at Fort Union Monument", "completion": "endpoint: alerts"}
+{"prompt": "What is the full name of Sequoia?", "completion": "endpoint: parks"}
+{"prompt": "In which state can I find Gettysburg?", "completion": "endpoint: parks"}
+{"prompt": "What events are planned at Washita?", "completion": "endpoint: events"}
+{"prompt": "Are there any current alerts at Kalaupapa?", "completion": "endpoint: alerts"}
+{"prompt": "How expensive is it to visit Bryce Canyon National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the address of Whitman Mission?", "completion": "endpoint: parks"}
+{"prompt": "Which state is Chamizal National Memorial located in?", "completion": "endpoint: parks"}
+{"prompt": "What are the current alerts for Hovenweep?", "completion": "endpoint: alerts"}
+{"prompt": "Tell me about Bryce Canyon National Park", "completion": "endpoint: parks"}
+{"prompt": "In which state can I find Zion National Park?", "completion": "endpoint: parks"}
+{"prompt": "What facilities are provided at Yukon?", "completion": "endpoint: amenities"}
+{"prompt": "In which state can I find Jewel Cave National Monument?", "completion": "endpoint: parks"}
+{"prompt": "Tell me the active alerts at Fort Union Monument", "completion": "endpoint: alerts"}
+{"prompt": "Are there any events at Sequoia & Kings Canyon National Parks?", "completion": "endpoint: events"}
+{"prompt": "Tell me about the activities available at Bryce Canyon", "completion": "endpoint: activities"}
+{"prompt": "What events are currently happening at Nez Perce National Historical Park?", "completion": "endpoint: events"}
+{"prompt": "What are the admission fees for Cumberland Island?", "completion": "endpoint: feespasses"}
+{"prompt": "What events are happening at Whitman Mission National Historic Site?", "completion": "endpoint: events"}
+{"prompt": "Are there any alerts at Washita?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any special events at Shiloh?", "completion": "endpoint: events"}
+{"prompt": "What conveniences are available at Roosevelt Campobello?", "completion": "endpoint: amenities"}
+{"prompt": "What facilities are available at Chamizal?", "completion": "endpoint: amenities"}
+{"prompt": "What fun things can I do at Jewel Cave?", "completion": "endpoint: activities"}
+{"prompt": "What is the entry fee for Nez Perce National Historical Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the admission fees for Wind Cave National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the ticket prices for Washita?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the cost of admission to Martin Van Buren National Historic Site?", "completion": "endpoint: feespasses"}
+{"prompt": "Describe Nez Perce to me", "completion": "endpoint: parks"}
+{"prompt": "What fun things can I do at Whitman Mission?", "completion": "endpoint: activities"}
+{"prompt": "Are there any special events at Canyon de Chelly?", "completion": "endpoint: events"}
+{"prompt": "What facilities are available at Wind Cave?", "completion": "endpoint: amenities"}
+{"prompt": "Are there any charges to access The White House Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the admission fees for Alibates?", "completion": "endpoint: feespasses"}
+{"prompt": "What kind of activities are there at Honouliuli?", "completion": "endpoint: activities"}
+{"prompt": "What is the location of Manhattan Project National Historical Park?", "completion": "endpoint: parks"}
+{"prompt": "What are the top activities at Pinnacles National Park?", "completion": "endpoint: activities"}
+{"prompt": "Where is Jewel Cave National Monument located?", "completion": "endpoint: parks"}
+{"prompt": "What kind of activities are there at Shiloh National Military Park?", "completion": "endpoint: activities"}
+{"prompt": "What events can I attend at Whitman Mission National Historic Site?", "completion": "endpoint: events"}
+{"prompt": "Are there any fees to visit Honouliuli National Historic Site?", "completion": "endpoint: feespasses"}
+{"prompt": "Give me a description of Yukon", "completion": "endpoint: parks"}
+{"prompt": "What are the ticket prices for Chamizal National Memorial?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the current alerts for Nez Perce National Historical Park?", "completion": "endpoint: alerts"}
+{"prompt": "Give me a description of Whitman Mission National Historic Site", "completion": "endpoint: parks"}
+{"prompt": "What is the entry fee for Pinnacles National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "List the amenities at Manhattan Project", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the activities available at Mesa Verde National Park", "completion": "endpoint: activities"}
+{"prompt": "Do I need to pay to enter Zion National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the full name of Gettysburg National Military Park?", "completion": "endpoint: parks"}
+{"prompt": "Are there any alerts at Canyon de Chelly National Monument?", "completion": "endpoint: alerts"}
+{"prompt": "What events are planned at Canyon de Chelly National Monument?", "completion": "endpoint: events"}
+{"prompt": "Tell me about the entrance fees for Whitman Mission National Historic Site", "completion": "endpoint: feespasses"}
+{"prompt": "What kind of events are held at Whitman Mission?", "completion": "endpoint: events"}
+{"prompt": "What is the cost of admission to Washita?", "completion": "endpoint: feespasses"}
+{"prompt": "What events are planned at The White House and President's Park?", "completion": "endpoint: events"}
+{"prompt": "What activities can I do at Honouliuli National Historic Site?", "completion": "endpoint: activities"}
+{"prompt": "What amenities exist at Roosevelt Campobello?", "completion": "endpoint: amenities"}
+{"prompt": "What upcoming events are scheduled at Nez Perce National Historical Park?", "completion": "endpoint: events"}
+{"prompt": "Tell me about the events at Pinnacles", "completion": "endpoint: events"}
+{"prompt": "What alerts are active at Manhattan Project National Historical Park currently?", "completion": "endpoint: alerts"}
+{"prompt": "What is the address of The White House Park?", "completion": "endpoint: parks"}
+{"prompt": "What amenities does Canyon de Chelly have?", "completion": "endpoint: amenities"}
+{"prompt": "What alerts are active at The White House and President's Park currently?", "completion": "endpoint: alerts"}
+{"prompt": "Tell me the address of Roosevelt Campobello International Park", "completion": "endpoint: parks"}
+{"prompt": "Tell me about The White House Park", "completion": "endpoint: parks"}
+{"prompt": "What can I do at Washita?", "completion": "endpoint: activities"}
+{"prompt": "What amenities does Fort Union National Monument have?", "completion": "endpoint: amenities"}
+{"prompt": "What amenities exist at Nez Perce National Historical Park?", "completion": "endpoint: amenities"}
+{"prompt": "What is the address of Hovenweep National Monument?", "completion": "endpoint: parks"}
+{"prompt": "What facilities are available at Alibates?", "completion": "endpoint: amenities"}
+{"prompt": "List the amenities at Alibates Flint Quarries National Monument", "completion": "endpoint: amenities"}
+{"prompt": "What amenities exist at Jewel Cave?", "completion": "endpoint: amenities"}
+{"prompt": "What is the cost of admission to Pinnacles National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the top activities at Chamizal?", "completion": "endpoint: activities"}
+{"prompt": "Where is Sequoia & Kings Canyon National Parks located?", "completion": "endpoint: parks"}
+{"prompt": "What are the ongoing alerts at Shiloh?", "completion": "endpoint: alerts"}
+{"prompt": "Tell me about the entrance fees for Yukon", "completion": "endpoint: feespasses"}
+{"prompt": "What amenities does Kalaupapa have?", "completion": "endpoint: amenities"}
+{"prompt": "What are the ongoing alerts at Whitman Mission?", "completion": "endpoint: alerts"}
+{"prompt": "What events are currently happening at Gettysburg National Military Park?", "completion": "endpoint: events"}
+{"prompt": "What conveniences are available at Gettysburg?", "completion": "endpoint: amenities"}
+{"prompt": "Can you provide the active alerts for Shiloh?", "completion": "endpoint: alerts"}
+{"prompt": "What facilities are available at Martin Van Buren National Historic Site?", "completion": "endpoint: amenities"}
+{"prompt": "What facilities are provided at Shiloh National Military Park?", "completion": "endpoint: amenities"}
+{"prompt": "Which state is The White House and President's Park located in?", "completion": "endpoint: parks"}
+{"prompt": "Give me a description of Bryce Canyon", "completion": "endpoint: parks"}
+{"prompt": "Can you provide the full name of Bryce Canyon?", "completion": "endpoint: parks"}
+{"prompt": "How expensive is it to visit Wind Cave National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What amenities exist at Kalaupapa National Historical Park?", "completion": "endpoint: amenities"}
+{"prompt": "In which state can I find Wind Cave?", "completion": "endpoint: parks"}
+{"prompt": "What is the full name of Yukon?", "completion": "endpoint: parks"}
+{"prompt": "Are there any current alerts at Roosevelt Campobello?", "completion": "endpoint: alerts"}
+{"prompt": "What can I do at Hovenweep National Monument?", "completion": "endpoint: activities"}
+{"prompt": "What alerts are active at Jewel Cave currently?", "completion": "endpoint: alerts"}
+{"prompt": "What activities and events are there at Whitman Mission National Historic Site?", "completion": "endpoint: events"}
+{"prompt": "What events are happening at Canyon de Chelly National Monument?", "completion": "endpoint: events"}
+{"prompt": "What is the cost of admission to The White House and President's Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What recreational activities are offered at Washita?", "completion": "endpoint: activities"}
+{"prompt": "What events are happening at Pinnacles?", "completion": "endpoint: events"}
+{"prompt": "What are the current alerts for Cumberland Island?", "completion": "endpoint: alerts"}
+{"prompt": "What conveniences are available at The White House Park?", "completion": "endpoint: amenities"}
+{"prompt": "What conveniences are available at Zion National Park?", "completion": "endpoint: amenities"}
+{"prompt": "What are the ongoing alerts at Washita Battlefield National Historic Site?", "completion": "endpoint: alerts"}
+{"prompt": "What is the full name of Honouliuli National Historic Site?", "completion": "endpoint: parks"}
+{"prompt": "What activities and events are there at Martin Van Buren National Historic Site?", "completion": "endpoint: events"}
+{"prompt": "List the active alerts at Wind Cave", "completion": "endpoint: alerts"}
+{"prompt": "What kind of activities are there at Bryce Canyon National Park?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are available at Kalaupapa National Historical Park?", "completion": "endpoint: amenities"}
+{"prompt": "Are there any charges to access Wind Cave National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What is the full name of Shiloh?", "completion": "endpoint: parks"}
+{"prompt": "What is the entry fee for Canyon de Chelly?", "completion": "endpoint: feespasses"}
+{"prompt": "In which state can I find Honouliuli?", "completion": "endpoint: parks"}
+{"prompt": "Can you provide the full name of Sequoia & Kings Canyon National Parks?", "completion": "endpoint: parks"}
+{"prompt": "What facilities are provided at Canyon de Chelly National Monument?", "completion": "endpoint: amenities"}
+{"prompt": "What events are currently happening at Kalaupapa National Historical Park?", "completion": "endpoint: events"}
+{"prompt": "What amenities should I expect at Washita Battlefield National Historic Site?", "completion": "endpoint: amenities"}
+{"prompt": "What are the current alerts for Wind Cave?", "completion": "endpoint: alerts"}
+{"prompt": "What activities are recommended at Whitman Mission?", "completion": "endpoint: activities"}
+{"prompt": "Give me a description of Gettysburg National Military Park", "completion": "endpoint: parks"}
+{"prompt": "Can you provide the full name of Gettysburg National Military Park?", "completion": "endpoint: parks"}
+{"prompt": "What alerts are active at Alibates Flint Quarries National Monument currently?", "completion": "endpoint: alerts"}
+{"prompt": "What conveniences are available at Gettysburg National Military Park?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the events at Kalaupapa", "completion": "endpoint: events"}
+{"prompt": "What events are currently happening at Canyon de Chelly?", "completion": "endpoint: events"}
+{"prompt": "How much does it cost to get into Gettysburg National Military Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What are the ongoing alerts at Roosevelt Campobello?", "completion": "endpoint: alerts"}
+{"prompt": "What kind of events are held at Hovenweep National Monument?", "completion": "endpoint: events"}
+{"prompt": "List the activities at Fort Union National Monument", "completion": "endpoint: activities"}
+{"prompt": "Tell me about the activities available at Chamizal National Memorial", "completion": "endpoint: activities"}
+{"prompt": "Tell me the address of Fort Union National Monument", "completion": "endpoint: parks"}
+{"prompt": "List the activities at Roosevelt Campobello International Park", "completion": "endpoint: activities"}
+{"prompt": "How much does it cost to get into Jewel Cave?", "completion": "endpoint: feespasses"}
+{"prompt": "What events can I attend at The White House and President's Park?", "completion": "endpoint: events"}
+{"prompt": "What is the full name of Roosevelt Campobello?", "completion": "endpoint: parks"}
+{"prompt": "How much does it cost to get into Mesa Verde National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "What conveniences are available at Chamizal National Memorial?", "completion": "endpoint: amenities"}
+{"prompt": "What is the full name of Wind Cave?", "completion": "endpoint: parks"}
+{"prompt": "What are the current alerts for Mesa Verde National Park?", "completion": "endpoint: alerts"}
+{"prompt": "Tell me about the events at Honouliuli", "completion": "endpoint: events"}
+{"prompt": "What is the address of Zion National Park?", "completion": "endpoint: parks"}
+{"prompt": "What activities and events are there at Manhattan Project?", "completion": "endpoint: events"}
+{"prompt": "What amenities exist at Sequoia?", "completion": "endpoint: amenities"}
+{"prompt": "What facilities are available at Kalaupapa?", "completion": "endpoint: amenities"}
+{"prompt": "What are the top activities at Hovenweep National Monument?", "completion": "endpoint: activities"}
+{"prompt": "Tell me about the activities available at The White House Park", "completion": "endpoint: activities"}
+{"prompt": "What recreational activities are offered at Gettysburg National Military Park?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are provided at Nez Perce?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the entrance fees for Cumberland Island", "completion": "endpoint: feespasses"}
+{"prompt": "What facilities are available at Mesa Verde National Park?", "completion": "endpoint: amenities"}
+{"prompt": "Are there any charges to access Mesa Verde National Park?", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any alerts at Jewel Cave?", "completion": "endpoint: alerts"}
+{"prompt": "What are the ticket prices for Fort Union National Monument?", "completion": "endpoint: feespasses"}
+{"prompt": "What activities are recommended at Cumberland Island National Seashore?", "completion": "endpoint: activities"}
+{"prompt": "What activities can I do at Roosevelt Campobello International Park?", "completion": "endpoint: activities"}
+{"prompt": "What events can I attend at Yukon - Charley Rivers National Preserve?", "completion": "endpoint: events"}
+{"prompt": "What are the current alerts for Zion National Park?", "completion": "endpoint: alerts"}
+{"prompt": "Are there any alerts at Wind Cave National Park?", "completion": "endpoint: alerts"}
+{"prompt": "Where is Hovenweep National Monument located?", "completion": "endpoint: parks"}
+{"prompt": "Which state is Gettysburg located in?", "completion": "endpoint: parks"}
+{"prompt": "What activities can I do at Martin Van Buren?", "completion": "endpoint: activities"}
+{"prompt": "List the active alerts at Yukon - Charley Rivers National Preserve", "completion": "endpoint: alerts"}
+{"prompt": "Tell me the address of Kalaupapa", "completion": "endpoint: parks"}
+{"prompt": "What are the ticket prices for Shiloh?", "completion": "endpoint: feespasses"}
+{"prompt": "What events can I attend at Martin Van Buren?", "completion": "endpoint: events"}
+{"prompt": "Where is Washita located?", "completion": "endpoint: parks"}
+{"prompt": "What facilities are available at Cumberland Island?", "completion": "endpoint: amenities"}
+{"prompt": "What alerts are active at Cumberland Island currently?", "completion": "endpoint: alerts"}
+{"prompt": "Do I need to pay to enter Alibates?", "completion": "endpoint: feespasses"}
+{"prompt": "Tell me about the amenities at Shiloh National Military Park", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the entrance fees for Pinnacles National Park", "completion": "endpoint: feespasses"}
+{"prompt": "What recreational activities are offered at Jewel Cave National Monument?", "completion": "endpoint: activities"}
+{"prompt": "What services and facilities does Whitman Mission offer?", "completion": "endpoint: amenities"}
+{"prompt": "What activities can I do at Whitman Mission?", "completion": "endpoint: activities"}
+{"prompt": "What facilities are provided at Manhattan Project National Historical Park?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the activities available at Alibates Flint Quarries National Monument", "completion": "endpoint: activities"}
+{"prompt": "Describe Kalaupapa to me", "completion": "endpoint: parks"}
+{"prompt": "What are the admission fees for Sequoia?", "completion": "endpoint: feespasses"}
+{"prompt": "Are there any events at Alibates Flint Quarries National Monument?", "completion": "endpoint: events"}
+{"prompt": "Are there any events at Canyon de Chelly?", "completion": "endpoint: events"}
+{"prompt": "Are there any charges to access Manhattan Project?", "completion": "endpoint: feespasses"}
+{"prompt": "What upcoming events are scheduled at Yukon - Charley Rivers National Preserve?", "completion": "endpoint: events"}
+{"prompt": "What facilities are provided at Cumberland Island?", "completion": "endpoint: amenities"}
+{"prompt": "Tell me about the entrance fees for Roosevelt Campobello International Park", "completion": "endpoint: feespasses"}
+{"prompt": "Can you provide the full name of Alibates Flint Quarries National Monument?", "completion": "endpoint: parks"}
+{"prompt": "What are the top activities at Fort Union Monument?", "completion": "endpoint: activities"}
