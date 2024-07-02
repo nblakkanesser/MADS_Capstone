@@ -11,9 +11,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score,f1_score,roc_auc_score
 
 from helper_functions import *
+from environment import env
 
-
-api_key = '5TjgNMFCh7h44T09HbQnbGhU8as11D0FDdjfJhgV'
+config = env.env()
+api_key = config['nps_api_key']
 api_base_url = 'https://developer.nps.gov/api/v1/'
 
 
