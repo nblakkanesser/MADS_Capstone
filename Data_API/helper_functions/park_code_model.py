@@ -11,6 +11,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score,f1_score,roc_auc_score
 
 from helper_functions import *
+import sys
+sys.path.insert(0,'../')
 from environment import env
 
 config = env.env()
