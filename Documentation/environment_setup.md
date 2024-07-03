@@ -1,5 +1,8 @@
+### Environment Notebook Setup Procedure
+
 The notebooks in this repo use a custom environment function to set user specific values such as secrets, API keys, and folder paths. Users can add a env.py to the environment folder using the following structure to initialize their environment values.
 
+```python
 def env():
 	dict = {'nps_api_key': '', # The users specific NPS API key. The key can be requested here:
 		 'gpt_api_key': '', # The users specific OpenAI API key. The key can be requested here:
