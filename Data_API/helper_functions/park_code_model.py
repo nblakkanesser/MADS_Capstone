@@ -101,7 +101,7 @@ def generate_synthetic_parks(raw_queries,park_codes,parks,park_abbreviations):
 # %%
 def map_park_code(user_input, model, vectorizer):
     """
-    Map user input to the correct state code using the trained model.
+    Map user input to the correct park code using the trained model.
 
     user_input: The query provided by the user.
     model: Trained classification model.
