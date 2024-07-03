@@ -1,0 +1,6 @@
+| Order | Parent Folder |      Notebook Name       | Description | Input | Output |
+|-------|---------------|--------------------------|-------------|-------|--------|
+| 1     | Data_API      | create_synthetic_data    | Create synthetic data for training a model to predict the NPS endpoint and parkcode requested in a user query  | NPS Parks API endpoint data & synthetic user queries             | 1. synthetic_queries.csv <br> 2. park_to_parkcode.csv <br> 3. park_to_root.csv                                 |
+| 2     | GPTModel      | gpt_endpoint_model       | Fine tune GPT model for predicting the endpoint a user query is requesting using synthetic_queries data        | 1. synthetic_queries.csv   | 1. endpoint_train_data.jsonl <br> 2. endpoint_val_data.jsonl <br> 3. endpoint_test_data.jsonl <br> 4. GPT Model: nps_model_endpoint<br>   |
+| 3     | GPTModel      | gpt_parkcode_model       | Fine tune GPT model for predicting the parkcode a user query is requesting using synthetic_queries data        | 1. synthetic_queries.csv   | 1. parkcode_train_data.jsonl <br> 2. parkcode_val_data.jsonl <br> 3. parkcode_test_data.jsonl <br> 4. GPT Model: nps_model_parkcode<br>   |
+| 4     | GPT_Model     | gpt_model_api_call       | Example usage of the GPT model for calling an endpoint based on a user query                                   |  |  |

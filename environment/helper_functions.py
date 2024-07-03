@@ -31,7 +31,6 @@ def save_to_jsonl(dataframe, filename,target):
             json.dump(example, f)
             f.write('\n')
 
-
 def handle_query(query, model, client, max_tokens):
     """
     Uses a fine tuned model to interpret query into necessary API results based on the model parameter. 
@@ -80,6 +79,7 @@ def api_call(query):
 
     endpoint: The API endpoint to call
     params: The param dict to pass through the API call
+    * ChatGPT was used to create the pagination process for parsing the API data.
     """
 
     endpoint, parkcode = get_params(query)
@@ -99,6 +99,7 @@ def api_call(query):
         request = requests.get(f"{api_base_url}{endpoint}", params=params)
         request_data = request.json()
 
+        # Limit park data to necessary fields
         if endpoint == 'parks':
             responses.extend([
                 {
@@ -120,6 +121,7 @@ def api_call(query):
         if int(start) >= int(request_data['total']):
             break
 
+    # Parse responses into appropriate output
     if endpoint == 'activities':
         output = [item['name'] for item in responses]
     elif endpoint == 'parks':
