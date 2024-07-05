@@ -15,9 +15,12 @@ def create_prompt_response(row, target):
     if target == 'endpoint':
         dict = {'prompt': row['query'],
                 'completion':f"endpoint: {row['api_call.endpoint']}"}
-    if target == 'parkcode':
+    elif target == 'parkcode':
         dict = {'prompt': row['query'],
                 'completion':f"parkcode: {row['api_call.parkCode']}"}
+    elif target == 'intent':
+        dict = {'prompt': row['query'],
+                'completion':f"{row['intent']}"}
     return dict
 
 def save_to_jsonl(dataframe, filename,target):

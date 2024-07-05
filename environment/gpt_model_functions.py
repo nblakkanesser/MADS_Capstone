@@ -38,18 +38,28 @@ def get_params(query):
     client = OpenAI(api_key  = config['gpt_api_key'])
     gpt_parkcode_model = config['gpt_parkcode_model']
     gpt_endpoint_model = config['gpt_endpoint_model']
+    gpt_intent_model = config['gpt_intent_model']
+    intents = ['description','address','state','fullname','alerts','amenities','events','feespass']
 
     # Load models from OpenAI
     parkcode_model = client.fine_tuning.jobs.retrieve(gpt_parkcode_model).fine_tuned_model
     endpoint_model = client.fine_tuning.jobs.retrieve(gpt_endpoint_model).fine_tuned_model
+    intent_model = client.fine_tuning.jobs.retrieve(gpt_intent_model).fine_tuned_model
 
     # Predict endpoint and parkcode
     max_tokens = 3
     endpoint = handle_query(query,endpoint_model,client,max_tokens).replace('endpoint: ','')
     max_tokens = 5
     parkcode = handle_query(query,parkcode_model,client,max_tokens).replace('parkcode: ','')
+    max_tokens = 1
+    if handle_query(query,intent_model,client,max_tokens) in intents:
+        intent = handle_query(query,intent_model,client,max_tokens)
+    elif handle_query(query,intent_model,client,2) in intents:
+        intent = handle_query(query,intent_model,client,2)
+    elif handle_query(query,intent_model,client,3) in intents:
+        intent = handle_query(query,intent_model,client,3)
 
-    return endpoint, parkcode
+    return endpoint, parkcode, intent
 
 def api_call(query):
     """
@@ -60,7 +70,7 @@ def api_call(query):
     * ChatGPT was used to create the pagination process for parsing the API data.
     """
 
-    endpoint, parkcode = get_params(query)
+    endpoint, parkcode, intent = get_params(query)
     responses = []
     limit = 50  # Number of results per page, maximum allowed by NPS API
     start = 0   # Initial starting point for pagination
@@ -100,14 +110,12 @@ def api_call(query):
             break
 
     # Parse responses into appropriate output
-    if endpoint == 'activities':
-        output = [item['name'] for item in responses]
-    elif endpoint == 'parks':
+    if endpoint == 'parks':
         temp_df = pd.DataFrame(responses[0])    
         addresses_df = pd.json_normalize(temp_df['addresses'])
         output = pd.concat([temp_df.drop(columns=['addresses']), addresses_df], axis=1) 
     else:
         output = pd.DataFrame(responses)    
 
-    return output
+    return endpoint, parkcode, intent, output
 
