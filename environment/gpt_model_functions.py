@@ -71,10 +71,7 @@ state_to_code = {
 }
     
 # invert the dictionary
-code_to_stat = dict(map(reversed, state_to_code.items()))
-
-def statecode_mapping(state_code):
-    return code_to_stat[state_code]
+code_to_state = dict(map(reversed, state_to_code.items()))
 
 def handle_query(query, model, client, max_tokens):
     """
@@ -119,6 +116,7 @@ def get_params(query):
     max_tokens = 5
     parkcode = handle_query(query,parkcode_model,client,max_tokens).replace('parkcode: ','')
     max_tokens = 1
+    #The intents dont have a uniform number of tokens and this was my solution (I'd like to improve this logic)
     if handle_query(query,intent_model,client,max_tokens) in intents:
         intent = handle_query(query,intent_model,client,max_tokens)
     elif handle_query(query,intent_model,client,2) in intents:
@@ -127,6 +125,43 @@ def get_params(query):
         intent = handle_query(query,intent_model,client,3)
 
     return endpoint, parkcode, intent
+
+def parse_endpoint(endpoint, parkcode, intent, responses):
+    parkname = parkcode_to_park[parkcode]
+    # Parse responses into appropriate output
+    if endpoint == 'parks':
+        # The address field of the parks endpoint comes in as a dictionary and the three lines below normalize the data into separate columns.
+        temp_df = pd.DataFrame(responses[0])    
+        addresses_df = pd.json_normalize(temp_df['addresses'])
+        responses_df = pd.concat([temp_df.drop(columns=['addresses']), addresses_df], axis=1) 
+
+        # Map state code to state name
+        state_name = code_to_state[responses_df['state'][0]]
+
+        # Answers question: which state is the park in?
+        if intent == 'state':
+            output = f"{responses_df['fullName'][0]} is located in {state_name}"
+        # Answers question: what is the park address?
+        if intent == 'address':
+            output = f"{responses_df['fullName'][0]} is located at {responses_df['line1'][0]} " + (f"{responses_df['line2'][0]} " if responses_df['line2'][0] else "") + f"in {responses_df['city'][0]}, {state_name} {responses_df['postalCode'][0]}"
+    # Have to add desciption and full name
+
+    elif endpoint == 'alerts':
+        # The alerts endpoint is straight forward but there may be multiple alerts so this function returns a count of the active alerts and then lists the alerts. 
+        responses_df = pd.DataFrame(responses) 
+        if len(responses_df) > 0:
+            output = f'There are {len(responses_df)} active alerts for {parkname}: \n '
+            # List each alert
+            for index, row in responses_df.iterrows():
+                output += f"Alert {index+1}: {row['description']}\n "
+        else:
+            # When there are no active alerts return the following:
+            output = f'There are no active alerts for {parkname}'
+    else:
+        output = pd.DataFrame(responses)   
+    
+    return output
+
 
 def api_call(query):
     """
@@ -176,17 +211,7 @@ def api_call(query):
         if int(start) >= int(request_data['total']):
             break
 
-    # Parse responses into appropriate output
-    if endpoint == 'parks':
-        temp_df = pd.DataFrame(responses[0])    
-        addresses_df = pd.json_normalize(temp_df['addresses'])
-        output = pd.concat([temp_df.drop(columns=['addresses']), addresses_df], axis=1) 
-        if intent == 'state':
-            output = f"{output['fullName'][0]} is located in {statecode_mapping(output['state'][0])}"
-        if intent == 'address':
-            output = f"{output['fullName'][0]} is located at {output['line1'][0]} " + (f"{output['line2'][0]} " if output['line2'][0] else "") + f"in {output['city'][0]}, {statecode_mapping(output['state'][0])} {output['postalCode'][0]}"
-    else:
-        output = pd.DataFrame(responses)    
+    output = parse_endpoint(endpoint, parkcode, intent, responses)
 
     return endpoint, parkcode, intent, output
 
