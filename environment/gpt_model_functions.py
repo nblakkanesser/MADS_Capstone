@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import requests
 from openai import OpenAI
+from datetime import datetime
 
 from environment import env
 config = env.env()
@@ -144,7 +145,35 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
         # Answers question: what is the park address?
         if intent == 'address':
             output = f"{responses_df['fullName'][0]} is located at {responses_df['line1'][0]} " + (f"{responses_df['line2'][0]} " if responses_df['line2'][0] else "") + f"in {responses_df['city'][0]}, {state_name} {responses_df['postalCode'][0]}"
-    # Have to add desciption and full name
+        # Answers question: what is the description of the park?
+        if intent == 'description':
+            output = f"Here is the description of {parkname}: {responses_df['description'][0]} "
+        # Answers question: what is the full name of the park?
+        if intent == 'fullname':
+            output = f"{parkname} is the full name of the park."
+      
+    elif endpoint == 'feespasses':
+        responses_df = pd.DataFrame(responses) 
+
+        fee_desc = responses_df['entranceFeeDescription'][0]
+        # If a fee description exists, start by printing the description
+        if len(fee_desc)>0 & responses_df['isFeeFreePark'][0]:
+            output = fee_desc
+
+            # Explain if the park is cashless or not
+            url = responses_df['feesAtWorkUrl'][0]
+            cash = responses_df['cashless'][0]
+            if cash == 'Yes':
+                output += f'\nCash is not accepted at {parkname}.'
+            else: 
+                output += f'\nCash is accepted at {parkname}.'
+            
+            # If a URL is provided, include it in the output
+            if len(url)>0:
+                output += f'\nPlease visit {url} for more information.'
+        # If fee free park flag is false, explain that there are no fees for the park.       
+        elif responses_df['isFeeFreePark'][0]  == False: 
+            output = f'There are no enterance fees for {parkname}'
 
     elif endpoint == 'alerts':
         # The alerts endpoint is straight forward but there may be multiple alerts so this function returns a count of the active alerts and then lists the alerts. 
@@ -157,6 +186,19 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
         else:
             # When there are no active alerts return the following:
             output = f'There are no active alerts for {parkname}'
+    
+    elif endpoint == 'events':
+        temp_df = pd.DataFrame(responses)   
+        responses_df = temp_df[temp_df['date'] == datetime.now().strftime('%Y-%m-%d')]
+        events = len(responses_df)
+        if events > 0:
+            output = f'Today, there are {events} events happening at {parkname}.'
+            for index, row in responses_df.iterrows():
+                output += f"\nEvent {index+1}: {row['title']} "
+                if len(row['location']) > 0:
+                    output += f"\n Location: {row['location']}"
+        else:
+            output = f'There are no event scheduled at {parkname} today' 
     else:
         output = pd.DataFrame(responses)   
     
