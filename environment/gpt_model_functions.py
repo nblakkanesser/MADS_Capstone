@@ -232,7 +232,7 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
         amenities = sorted(list(set(name for name in amenities_df['name'])))
         if len(amenities) > 0:
             # List amenities
-            output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.capitalize()} category: '
+            output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.title()} category: '
             for amenity in amenities:
                 output += f'\n {amenity}'
         # Trouble shoot if user input does not make sense (Functionality will need to change with chatbot)
