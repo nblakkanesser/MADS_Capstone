@@ -294,5 +294,5 @@ def api_call(query):
 
     output = parse_endpoint(endpoint, parkcode, intent, responses)
 
-    return endpoint, parkcode, intent, output
+    return output
 
