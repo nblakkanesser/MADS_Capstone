@@ -11,6 +11,7 @@ api_base_url = 'https://developer.nps.gov/api/v1/'
 parkcode_to_park = pd.read_csv(config['root']+'parkcode_to_park.csv')
 parkcode_to_park = dict(zip(parkcode_to_park['parkCode'], parkcode_to_park['fullName']))
 
+# * The mapping dictionary below was created by rogerallen and found at: https://gist.github.com/rogerallen/1583593
 state_to_code = {
     "Alabama": "AL",
     "Alaska": "AK",
@@ -73,6 +74,13 @@ state_to_code = {
     
 # invert the dictionary
 code_to_state = dict(map(reversed, state_to_code.items()))
+
+def get_user_input(prompt):
+    #* Provided by ChatGPT
+    # Prompt the user for input
+    user_input = input(prompt)
+    # Return the user's input
+    return user_input
 
 def handle_query(query, model, client, max_tokens):
     """
@@ -179,7 +187,7 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
         # The alerts endpoint is straight forward but there may be multiple alerts so this function returns a count of the active alerts and then lists the alerts. 
         responses_df = pd.DataFrame(responses) 
         if len(responses_df) > 0:
-            output = f'There are {len(responses_df)} active alerts for {parkname}: \n '
+            output = f'There {"is" if len(responses_df) == 1 else "are"} {len(responses_df)} active {"alert" if len(responses_df) == 1 else "alerts"} for {parkname}: \n '
             # List each alert
             for index, row in responses_df.iterrows():
                 output += f"Alert {index+1}: {row['description']}\n "
@@ -189,16 +197,47 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
     
     elif endpoint == 'events':
         temp_df = pd.DataFrame(responses)   
+        # Filter dataframe for a date (Currently set to today, but this could be made dynamic in the future)
         responses_df = temp_df[temp_df['date'] == datetime.now().strftime('%Y-%m-%d')]
         events = len(responses_df)
         if events > 0:
-            output = f'Today, there are {events} events happening at {parkname}.'
+            # Count events 
+            output = f'Today, there {"is" if events == 1 else "are"} {events} {"event" if events == 1 else "events"} happening at {parkname}.'
             for index, row in responses_df.iterrows():
+                # List each event
                 output += f"\nEvent {index+1}: {row['title']} "
+                # List event location if included
                 if len(row['location']) > 0:
                     output += f"\n Location: {row['location']}"
         else:
+            # When there are no events, return the following
             output = f'There are no event scheduled at {parkname} today' 
+    elif endpoint == 'amenities':
+        responses_df = pd.DataFrame(responses) 
+        # List the amenity categories for the user to review
+        categories = sorted(list(set(element for sublist in responses_df['categories'] for element in sublist)))
+        if len(categories) > 0:
+            cat_output = f'There are {len(categories)} amenity categories. Choose one of the following categories to learn more: '
+            for category in categories:
+                cat_output += f'\n {category}'
+        else:
+            cat_output = f'There are no amenities available at {parkname}' 
+
+        # Collect user input (Functionality will need to change with chatbot)
+        print(cat_output)
+        user_input = get_user_input(cat_output)
+        # Find all amenities in the specified category (Works with upper or lowercase)
+        amenities_df = responses_df[responses_df['categories'].apply(lambda x: user_input.lower() in [item.lower() for item in x])]
+        # Create list of amenities in category
+        amenities = sorted(list(set(name for name in amenities_df['name'])))
+        if len(amenities) > 0:
+            # List amenities
+            output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.capitalize()} category: '
+            for amenity in amenities:
+                output += f'\n {amenity}'
+        # Trouble shoot if user input does not make sense (Functionality will need to change with chatbot)
+        else:
+            output = "The specified category is not an option. Please try again."
     else:
         output = pd.DataFrame(responses)   
     
