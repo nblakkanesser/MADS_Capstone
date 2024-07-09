@@ -187,10 +187,10 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
         # The alerts endpoint is straight forward but there may be multiple alerts so this function returns a count of the active alerts and then lists the alerts. 
         responses_df = pd.DataFrame(responses) 
         if len(responses_df) > 0:
-            output = f'There {"is" if len(responses_df) == 1 else "are"} {len(responses_df)} active {"alert" if len(responses_df) == 1 else "alerts"} for {parkname}: \n '
+            output = f'There {"is" if len(responses_df) == 1 else "are"} {len(responses_df)} active {"alert" if len(responses_df) == 1 else "alerts"} for {parkname}. \n '
             # List each alert
             for index, row in responses_df.iterrows():
-                output += f"Alert {index+1}: {row['description']}\n "
+                output += f"• {row['description']}\n "
         else:
             # When there are no active alerts return the following:
             output = f'There are no active alerts for {parkname}'
@@ -232,7 +232,7 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
         amenities = sorted(list(set(name for name in amenities_df['name'])))
         if len(amenities) > 0:
             # List amenities
-            output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.title()} category: '
+            output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.title()} category. '
             for amenity in amenities:
                 output += f'\n {amenity}'
         # Trouble shoot if user input does not make sense (Functionality will need to change with chatbot)
@@ -243,13 +243,28 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
     
     return output
 
+def create_url(query):
+    """
+    Use to create the url based on a user query
+    """
 
-def api_call(query):
+    endpoint, parkcode, intent = get_params(query)
+    api_base_url = 'https://developer.nps.gov/api/v1/'
+    api_key = config['nps_api_key']
+        
+    if endpoint == 'fees':
+        endpoint = 'feespasses'
+
+    request = f'{api_base_url}{endpoint}?parkCode={parkcode}&api_key={api_key}'
+
+    return request, endpoint
+
+def api_call(query,parse = True):
     """
     Use to get all data from endpoint without specific processing
 
-    endpoint: The API endpoint to call
-    params: The param dict to pass through the API call
+    query: A user query.
+    parse: Whether or not to call the parse_endpoint function. 
     * ChatGPT was used to create the pagination process for parsing the API data.
     """
 
@@ -292,7 +307,10 @@ def api_call(query):
         if int(start) >= int(request_data['total']):
             break
 
-    output = parse_endpoint(endpoint, parkcode, intent, responses)
+    if parse == True:
+        output = parse_endpoint(endpoint, parkcode, intent, responses)
+    else:
+        output = responses
 
     return output
 

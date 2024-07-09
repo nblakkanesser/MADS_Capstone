@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Parks Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #343541;
+            color: #d1d5db;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        .welcome-message {
+            background-color: #343541;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 16px; /* Adjust font size as needed */
+            color: #ffffff;
+        }
+        #chatbox {
+            background-color: #343541;
+            width: 80%;
+            max-width: 500px;
+            height: 60vh;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .user-message {
+            color: #ffffff;
+            background-color: #444654;
+            align-self: flex-end;
+            margin: 10px 0;
+            font-size: 16px;
+            max-width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            margin-left: 200px;
+            margin-right: 50px;
+        }
+        .bot-message {
+            color: #ffffff;
+            background-color: #444654;
+            align-self: flex-start;
+            margin: 10px 0;
+            font-size: 16px;
+            max-width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            margin-right: 100px;
+        }
+
+        #input-container {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+        }
+        #message {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #555761;
+            border-radius: 5px;
+            background-color: #3c3f47;
+            color: #ffffff;
+        }
+        #send-button {
+            padding: 10px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #10a37f;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        #send-button:hover {
+            background-color: #0e8e6f;
+        }
+
+
+        
+    </style>
+    <script>
+        function addWelcomeMessages() {
+            const chatbox = document.getElementById("chatbox");
+            const welcomeMessages = [
+                "How can I help you?"
+                
+            ];
+            welcomeMessages.forEach(message => {
+                chatbox.innerHTML += `<p class="bot-message"><strong>🐻:</strong> ${message}</p>`;
+            });
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = document.getElementById("message").value;
+
+            if (message.toLowerCase() === "exit") {
+            window.close();
+            return;
+        }
+
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message }),
+            });
+            const data = await response.json();
+            const botResponse = data.response.replace(/\n/g, '<br>');
+            document.getElementById("chatbox").innerHTML += `<p class="user-message"> ${message}</p>`;
+            document.getElementById("chatbox").innerHTML += `<p class="bot-message">🐻: ${botResponse}</p>`;
+            document.getElementById("message").value = "";
+            document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+        }
+
+        window.onload = addWelcomeMessages;
+    </script>
+</head>
+<body>
+    <h1>National Park Service: Park Pal 🐻</h1>
+    <div class="welcome-message">
+        <p>You can ask questions about parks, amenities, events, fees, and more. <br> Type 'exit' to end the chat.</p>
+    </div>
+    <!-- Existing chatbox and input-container -->
+    <div id="chatbox">
+        <!-- Chat messages will appear here -->
+    </div>
+    <div id="input-container">
+        <input type="text" id="message" placeholder="Type your message here..." onkeypress="if(event.keyCode === 13) sendMessage();">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+</body>
+</html>
