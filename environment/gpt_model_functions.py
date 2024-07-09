@@ -8,7 +8,7 @@ from environment import env
 config = env.env()
 
 api_base_url = 'https://developer.nps.gov/api/v1/'
-parkcode_to_park = pd.read_csv(config['root']+'parkcode_to_park.csv')
+parkcode_to_park = pd.read_csv(config['root']+'Data_API\\parkcode_to_park.csv')
 parkcode_to_park = dict(zip(parkcode_to_park['parkCode'], parkcode_to_park['fullName']))
 
 # * The mapping dictionary below was created by rogerallen and found at: https://gist.github.com/rogerallen/1583593
