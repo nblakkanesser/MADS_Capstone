@@ -103,7 +103,10 @@ def env():
     entities: List of items to loop through such as State, Parks, Amentities.
     endpoint: the NPS API endpoint to call such as /activities or /parks.
     intent: A more specific label for queries that use the same endpoint. 
-            For example, the questions "Tell me about {park}" and "Where is {park} located" are answered by the same endpoint. Therefore, it is necessary to ascribe an intent to the distinguish the questions. The first example could have the 'description' intent and the second could have the 'address' intent.
+            For example, the questions "Tell me about {park}" and "Where is {park} located" 
+            are answered by the same endpoint. Therefore, it is necessary to ascribe an intent 
+            to the distinguish the questions. The first example could have the 'description' 
+            intent and the second could have the 'address' intent.
     queries: A list of queries you would like to associate with a given set of API calls.
     """
 
@@ -131,7 +134,7 @@ train_file_id = train_file.id
 val_file_id = val_file.id
 ```
 
-##### 3. Run fine-tuning job programmatically
+##### Run fine-tuning job programmatically
 ```python
 # Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
   # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
@@ -149,8 +152,8 @@ fine_tune = client.fine_tuning.jobs.create(
 fine_tune_id = fine_tune.id
 ```
 
-##### 4. Host Park Pal locally
-This code was created using ChatGPT.
+#### 3. 04_nps_park_pal/06_post_park_pal.ipynb
+##### Host Park Pal locally
 ```python
 app = Flask(__name__)
 
