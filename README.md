@@ -11,9 +11,9 @@
 
 ### Introduction:
 
-Park Pal is an interactive chatbot backed by the National Park Service API. 
-Park Pal can answer questions about parks, amenities, events, fees, and more.
-Park Pal is hosted using AWS and can be accessed using the following link:
+Park Pal is an interactive chatbot backed by the National Park Service API. \
+Park Pal can answer questions about parks, amenities, events, fees, and more.\
+Park Pal is hosted using AWS and can be accessed using the following link: [Insert Linke Here]\
 Using this repo, you can also host Park Pal locally.
 
 ### Features:
