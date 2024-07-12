@@ -43,13 +43,13 @@ python -m spacy download en_core_web_sm
 ```
 ### Data Access
 
-#### Data Sources
+Data Sources
 1. **National Parks Service API**: This chatbot uses data from the National Parks Service API to fine-tune OpenAI GPT models.
 2. **National Parks Service IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
 3. **OpenAI API**: The project also utilizes OpenAI models for which an API key will be needed.
 
-#### Accessing the Data
-##### NPS IRMA
+Accessing the Data
+- NPS IRMA
 1. **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
 2. **Set query parameters**/
     Select all on the following:
@@ -63,7 +63,7 @@ python -m spacy download en_core_web_sm
 
 Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
 
-##### NPS API & OpenAI
+- NPS API & OpenAI
 1. **Obtain API Keys**
 - **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
     - The 02_nps_api_data\02_nps_api_example_usage.ipynb file can be used to explore how to interact with the API.
