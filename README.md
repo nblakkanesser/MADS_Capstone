@@ -50,27 +50,26 @@ Data Sources
 
 Accessing the Data
 - NPS IRMA
-1. **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
-2. **Set query parameters**/
-    Select all on the following:
-    - Select Region(s)
-    - Select Park(s)
-    - Select Additional Field(s)
-    - Select Field Name(s)
-3. **Click 'View Report'**
-4. **Download data to CSV**
-5. **Save CSV to 05_nps_analysis folder**
-
-Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
+    - **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
+    - **Set query parameters**/
+        Select all on the following:
+        - Select Region(s)
+        - Select Park(s)
+        - Select Additional Field(s)
+        - Select Field Name(s)
+    - **Click 'View Report'**
+    - **Download data to CSV**
+    - **Save CSV to 05_nps_analysis folder**
+    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
 
 - NPS API & OpenAI
-1. **Obtain API Keys**
-- **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
-    - The 02_nps_api_data\02_nps_api_example_usage.ipynb file can be used to explore how to interact with the API.
-- **OpenAI API Key**: Sign up at [OpenAI API Platform](https://platform.openai.com/api-keys) to obtain your API key.
+    - **Obtain API Keys**
+        - **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
+            - The 02_nps_api_data\02_nps_api_example_usage.ipynb file can be used to explore how to interact with the API.
+        - **OpenAI API Key**: Sign up at [OpenAI API Platform](https://platform.openai.com/api-keys) to obtain your API key.
 
-2. **Update Environment Variables**
-- Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
+    - **Update Environment Variables**
+        - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
 
 ### Repo Usage:
 
