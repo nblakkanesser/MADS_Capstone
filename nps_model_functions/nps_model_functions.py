@@ -124,7 +124,7 @@ def get_params(query):
     max_tokens = 3
     endpoint = handle_query(query,endpoint_model,client,max_tokens).replace('endpoint: ','')
     max_tokens = 5
-    parkcode = handle_query(query,parkcode_model,client,max_tokens).replace('parkcode: ','')
+    parkcode = handle_query(query,parkcode_model,client,max_tokens).replace('parkcode: ','')[:4]
     max_tokens = 1
     #The intents dont have a uniform number of tokens and this was my solution (I'd like to improve this logic)
     if handle_query(query,intent_model,client,max_tokens) in intents:

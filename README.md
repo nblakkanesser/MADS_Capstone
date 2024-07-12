@@ -12,10 +12,10 @@
 
 ### Introduction:
 
-Park Pal is an interactive chatbot backed by the National Park Service (NPS) API. \
-Park Pal can answer questions about parks, amenities, events, fees, and more.\
-Park Pal is hosted using AWS and can be accessed using the following link: [Insert Linke Here]\
-Using this repo, you can also host Park Pal locally.
+- Park Pal is an interactive chatbot backed by the National Park Service (NPS) API. \
+- Park Pal can answer questions about parks, amenities, events, fees, and more.\
+- Park Pal is hosted using AWS and can be accessed using the following link: [Insert Linke Here]\
+- Using this repo, you can also host Park Pal locally.
 
 ### Features:
 - Comprehensive Park Information: Access detailed information about all national parks, including descriptions, events, and amenities.
@@ -123,6 +123,8 @@ def env():
 ```
 
 ### Process Highlights:
+
+Please review the 01_documentation folder for file an inventory of files and notebooks. 
 
 #### 1. 02_nps_api_data/01_create_synthetic_data.ipynb
 ##### create_synthetic_queries function
