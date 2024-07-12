@@ -3,11 +3,11 @@
 ### Table of Contents
 1. [Introduction](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#introduction)
 2. [Features](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#features)
-3. [Installation:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#installation)
-4. [Usage:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
-5. [Configuration:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration)
+3. [Installation](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#installation)
+4. [Usage](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
+5. [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration)
 6. [Process Highlights](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#process-highlights)
-7. [Contributors:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#contributors)
+7. [Contributors](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#contributors)
 
 ### Introduction:
 
