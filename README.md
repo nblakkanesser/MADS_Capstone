@@ -1,27 +1,185 @@
-Place Holder
-hugging face - chunking strategies
-embedding the chunks into vectors
-chroma (vector store) 
-retrieval method - API calls/
--> question -> chunks from store -> LLM -> answer question based on context
+## Park Pal 🐻
 
-Can we have chat gpt create the API call string?
-->prompt and examples
+### Table of Contents
+1. Introduction
+2. Features
+3. Installation
+4. Usage
+5. Configuration
+6. Process Highlights
+7. License
+8. Contributors
 
-Separate prompt for Park to ParkCode?
+### Introduction:
 
-Evaluation
-RAGAS - for RAG evaluation, explore what types of evaluation, retrieval-focused
-Correct generation - some manual evaluation may be necessary 
+Park Pal is an interactive chatbot backed by the National Park Service API. 
+Park Pal can answer questions about parks, amenities, events, fees, and more.
+Park Pal is hosted using AWS and can be accessed using the following link:
+Using this repo, you can also host Park Pal locally.
 
-Evaluate chatGpt vs a traditional NLP key-word matching on the same queries
-Set up baseline architecture for experimentation
+### Features:
+- Comprehensive Park Information: Access detailed information about all national parks, including descriptions, events, and amenities.
+- Real-time Data: Get the latest updates on park alerts, events, and fees from the NPS API.
+- Accessibility Information: Access details about park accessibility features, including trails, facilities, and services for visitors with disabilities.
 
+### Installation:
+Steps to install and set up the project:
 
-#Streamlit user interface
-# retieval augmented generation
-# chunking
-# hugging face python package for chunking
-# then embedding (vector store: chroma)
-# retieval methodology (retriever, embeds question, then pulls chunks to the llm )
-# few shot
+1. Clone the repository:
+```sh
+git clone https://github.com/nblakkanesser/MADS_Capstone.git
+```
+2. Navigate to the project directory:
+```sh
+cd MADS_Capstone
+```
+3. Install dependencies:
+```sh
+pip install -r requirements.txt
+```
+4. After installing the dependencies, you need to download the spaCy language model. Run the following command:
+```sh
+python -m spacy download en_core_web_sm
+```
+
+### Usage:
+
+#### Local Park Pal Hosting:
+```mermaid
+flowchart TD
+    A[02_nps_api_data] -->|Step 1| B[01_create_synthetic_data.ipynb]
+    B -->|Step 2| C[03_nps_models]
+    C -->|Step 2| D[02_gpt_endpoint_model.ipynb]
+    C -->|Step 2| E[03_gpt_parkcode_model.ipynb]
+    C -->|Step 2| F[04_gpt_intent_model.ipynb]
+    D -->|Step 3| G[04_nps_park_pal]
+    E -->|Step 3| G
+    F -->|Step 3| G
+    G -->|Step 3| H[06_post_park_pal.ipynb]
+
+    subgraph Folder1 [02_nps_api_data]
+        B
+    end
+
+    subgraph Folder2 [03_nps_models]
+        D
+        E
+        F
+    end
+
+    subgraph Folder3 [04_nps_park_pal]
+        H
+    end
+```
+#### AWS Park Pal Hosting:
+
+### Configuration:
+
+#### Environment Notebook Setup Procedure
+
+The notebooks in this repo use a custom environment function to set user specific values such as secrets, API keys, and folder paths. Users can add a env.py to the environment folder using the following structure to initialize their environment values.
+
+```python
+def env():
+	dict = {'nps_api_key': '', # The users specific NPS API key. The key can be requested here: https://www.nps.gov/subjects/developer/get-started.htm
+		 'gpt_api_key': '', # The users specific OpenAI API key. The key can be requested here: https://platform.openai.com/api-keys
+		 'root': '', # The users specific root folder path containing the repo Example: "C:\\Users\\[INSERT USER]\\Documents\\MADS 2021\\Capstone\\MADS_Capstone\\"
+		 'gpt_parkcode_model': '', # The OpenAI Job ID for the parkcode model fine tuned using the GPT Model notebooks.
+		 'gpt_endpoint_model': '', # The OpenAI Job ID for the endpoint model fine tuned using the GPT Model notebooks.
+		 'gpt_intent_model':'',# The OpenAI Job ID for the intent model fine tuned using the GPT Model notebooks.
+		 }
+	return dict
+```
+
+### Process Highlights:
+
+#### 02_nps_api_data/01_create_synthetic_data.ipynb
+##### create_synthetic_queries function
+```python
+"""
+    Creates synthetic data in the necessary format for a specified API call.
+
+    api_key: Personal API key to use in request.
+    entities: List of items to loop through such as State, Parks, Amentities.
+    endpoint: the NPS API endpoint to call such as /activities or /parks.
+    intent: A more specific label for queries that use the same endpoint. 
+            For example, the questions "Tell me about {park}" and "Where is {park} located" are answered by the same endpoint. Therefore, it is necessary to ascribe an intent to the distinguish the questions. The first example could have the 'description' intent and the second could have the 'address' intent.
+    queries: A list of queries you would like to associate with a given set of API calls.
+    """
+
+queries = ["Tell me about {entity}","Give me a description of {entity}","Describe {entity} to me","What is the description of {entity}?"]
+ParkDesc = create_synthetic_queries(nps_api_key, entities = parks_combined, endpoint = "parks", intent = "description", queries = queries)
+```
+
+#### 03_nps_models/02_gpt_endpoint_model.ipynb & 03_gpt_parkcode_model.ipynb & 04_gpt_intent_model.ipynb
+##### Upload synthetic data to OpenAI
+```python
+# Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
+  # Documentation: https://platform.openai.com/docs/api-reference/files/create
+train_file =  client.files.create(
+  file=open(train_data, "rb"),
+  purpose="fine-tune"
+)
+
+val_file = client.files.create(
+  file=open(val_data, "rb"),
+  purpose="fine-tune"
+)
+
+# Retrieve file id to be used in fine tuning job
+train_file_id = train_file.id
+val_file_id = val_file.id
+```
+
+##### Run fine-tuning job programmatically
+```python
+# Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
+  # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
+fine_tune = client.fine_tuning.jobs.create(
+    # The Davinci model was selected for its performance as a completion model over using a chat model based on our use case.
+    # We also tried using the gpt-3.5-turbo and we were unable to get the model to complete after an hour of training.
+    # Conversely, the davinci model averaged a 20 minute training period.
+    model="davinci-002",
+    training_file=train_file_id,
+    validation_file=val_file_id,
+    seed = 42,
+    suffix = model_name
+)
+# The fine tune id needs to be retained and set in the environment file to be used when calling the fine-tuned model.
+fine_tune_id = fine_tune.id
+```
+
+##### Host Park Pal Locally
+This code was created using ChatGPT.
+```python
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_input = request.json.get("message")
+    if not user_input:
+        return jsonify({"response": "Please provide a message."})
+
+    try:
+        # Calls the OpenAI Fine-tuned GPT models (each run will charge the account)
+        output = nps_model_functions.api_call(user_input)
+    except:
+        output = "I specialize only in queries related to amenities, events, alerts, park fees, park locations, and park descriptions. Please clarify your question."
+    return jsonify({"response": output})
+
+if __name__ == "__main__":
+    app.run(port=8000)
+```
+
+### Contributors:
+
+Nicole Blakkan-Esser
+Lauralyn Curry-Leech 
+Courtney Gibson: gibsonce@umich.edu
+
+Project Link - https://github.com/nblakkanesser/MADS_Capstone.git
+

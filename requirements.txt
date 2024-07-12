@@ -1,20 +1,19 @@
-import requests
-import pandas as pd 
-import random
-from sklearn.model_selection import train_test_split
-import json
-import sys
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score,f1_score,roc_auc_score
-from sklearn.metrics import accuracy_score
-from openai import OpenAI
-import os
-import openai
-import time
-from datetime import datetime
-from flask import Flask, request, jsonify, render_template
+requests==2.31.0
+pandas==1.0.3
+scikit-learn==0.24.2
+openai==1.9.0
+flask==2.0.1
+numpy==1.18.2
+matplotlib==3.5.3
+seaborn==0.12.2
+scikit-learn==1.0.2
+scikit-learn-extra==0.3.0
+pydantic==1.10.17
+pydantic_core==2.14.6
+nbformat==5.8.0
+nbconvert==7.6.0
 
-# Custom Libraries
-from environment import env
-from environment import helper_functions
+ragas
+spacy
+statsmodels
+geopandas
