@@ -43,13 +43,13 @@ python -m spacy download en_core_web_sm
 ```
 ### Data Access:
 
-### Data Sources
+#### Data Sources
 1. **National Parks Service API**: This project uses data from the National Parks Service API to fine-tune OpenAI GPT models.
 2. **National Parks Service: IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
 3. **OpenAI API**: The project also utilizes OpenAI models for which an API key will be needed.
 
-### Accessing the Data
-#### NPS IRMA
+#### Accessing the Data
+##### NPS IRMA
  1. **Navigate to portal**: [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
  2. **Set Query Parameters**
     Select all on the following:
@@ -61,7 +61,7 @@ python -m spacy download en_core_web_sm
 4. **Download Data to CSV**
 5. **Save CSV to 05_nps_analysis  Folder**
 
-#### NPS API & OpenAI
+##### NPS API & OpenAI
 1. **Obtain API Keys**:
    - **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
    - **OpenAI API Key**: Sign up at [OpenAI API Platform](https://platform.openai.com/api-keys) to obtain your API key.
@@ -74,7 +74,7 @@ python -m spacy download en_core_web_sm
    - Ensure you comply with the terms of use for the NPS API and OpenAI API.
    - Follow any data usage and privacy policies associated with the APIs.
 
-### Usage:
+### Repo Usage:
 
 #### Local Park Pal Hosting:
 ```mermaid
