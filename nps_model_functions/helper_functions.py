@@ -26,7 +26,7 @@ def create_prompt_response(row, target):
 def save_to_jsonl(dataframe, filename,target):
     """
     Writes record to json with correct GPT format
-    * ChatGPT was used to assist in writing this function
+    * ChatGPT assisted in writing this function
     """
     with open(filename, 'w') as f:
         for _, row in dataframe.iterrows():
