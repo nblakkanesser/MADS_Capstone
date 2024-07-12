@@ -3,12 +3,11 @@
 ### Table of Contents
 1. [Introduction](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#introduction)
 2. [Features](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#features)
-3. Installation
-4. Usage
-5. Configuration
-6. Process Highlights
-7. License
-8. Contributors
+3. [Installation:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#installation)
+4. [Usage:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
+5. [Configuration:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration)
+6. [Process Highlights](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#process-highlights)
+7. [Contributors:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#contributors)
 
 ### Introduction:
 
@@ -22,7 +21,7 @@ Using this repo, you can also host Park Pal locally.
 - Real-time Data: Get the latest updates on park alerts, events, and fees from the NPS API.
 - Accessibility Information: Access details about park accessibility features, including trails, facilities, and services for visitors with disabilities.
 
-### [Installation:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#installation)
+### Installation
 Steps to install and set up the project:
 
 1. Clone the repository:
@@ -42,7 +41,7 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-### [Usage:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
+### Usage:
 
 #### Local Park Pal Hosting:
 ```mermaid
@@ -74,7 +73,7 @@ flowchart TD
 #### AWS Park Pal Hosting:
 [INSERT PROCESS HERE]
 
-### [Configuration:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration)
+### Configuration
 
 #### Environment Notebook Setup Procedure
 
@@ -179,7 +178,7 @@ if __name__ == "__main__":
     app.run(port=8000)
 ```
 
-### [Contributors:](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#contributors)
+### Contributors
 
 1. Nicole Blakkan-Esser
 2. Lauralyn Curry-Leech 
