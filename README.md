@@ -68,7 +68,7 @@ flowchart TD
     end
 
     subgraph Folder3 [04_nps_park_pal]
-        HG
+        G
     end
 ```
 #### AWS Park Pal Hosting:
@@ -77,7 +77,7 @@ flowchart TD
 
 #### Environment Notebook Setup Procedure
 
-The notebooks in this repo use a custom environment function to set user specific values such as secrets, API keys, and folder paths. Users can add a env.py to the environment folder using the following structure to initialize their environment values.
+The notebooks in this repo use a custom environment function to set user specific values such as secrets, API keys, and folder paths. Users can add a env.py to the environment folder using the following structure to initialize their environment values. This notebook must be completed prior to running the code.
 
 ```python
 def env():
@@ -93,7 +93,7 @@ def env():
 
 ### Process Highlights:
 
-#### 02_nps_api_data/01_create_synthetic_data.ipynb
+#### 1. 02_nps_api_data/01_create_synthetic_data.ipynb
 ##### create_synthetic_queries function
 ```python
 """
@@ -111,7 +111,7 @@ queries = ["Tell me about {entity}","Give me a description of {entity}","Describ
 ParkDesc = create_synthetic_queries(nps_api_key, entities = parks_combined, endpoint = "parks", intent = "description", queries = queries)
 ```
 
-#### 03_nps_models/02_gpt_endpoint_model.ipynb & 03_gpt_parkcode_model.ipynb & 04_gpt_intent_model.ipynb
+#### 2. 03_nps_models/02_gpt_endpoint_model.ipynb & 03_gpt_parkcode_model.ipynb & 04_gpt_intent_model.ipynb
 ##### Upload synthetic data to OpenAI
 ```python
 # Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
@@ -131,7 +131,7 @@ train_file_id = train_file.id
 val_file_id = val_file.id
 ```
 
-##### Run fine-tuning job programmatically
+##### 3. Run fine-tuning job programmatically
 ```python
 # Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
   # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
@@ -149,7 +149,7 @@ fine_tune = client.fine_tuning.jobs.create(
 fine_tune_id = fine_tune.id
 ```
 
-##### Host Park Pal Locally
+##### 4. Host Park Pal locally
 This code was created using ChatGPT.
 ```python
 app = Flask(__name__)
@@ -177,9 +177,9 @@ if __name__ == "__main__":
 
 ### Contributors:
 
-Nicole Blakkan-Esser
-Lauralyn Curry-Leech 
-Courtney Gibson: gibsonce@umich.edu
+1. Nicole Blakkan-Esser
+2. Lauralyn Curry-Leech 
+3. Courtney Gibson: gibsonce@umich.edu
 
 Project Link - https://github.com/nblakkanesser/MADS_Capstone.git
 
