@@ -74,6 +74,7 @@ Accessing the Data
 ### Repo Usage:
 
 #### Local Park Pal Hosting:
+Run the notebooks in the following process flow to host the Park Pal on your local 8000 port.
 ```mermaid
 flowchart TD
     B[01_create_synthetic_data.ipynb]

@@ -91,6 +91,7 @@ def handle_query(query, model, client, max_tokens):
     client (obj): Authorization through API key to GPT console.
     max_tokens (int): Number of tokens to limit response to. (Parameter is a misnomer as the response will try to fit 50 tokens if max is set to 50)
     * Function was created using OpenAI fine-tuning documentation
+    https://platform.openai.com/docs/api-reference/fine-tuning
     """
     prompt = f"prompt: {query}\n"
     response = client.completions.create(
