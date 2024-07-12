@@ -41,38 +41,36 @@ pip install -r requirements.txt
 ```sh
 python -m spacy download en_core_web_sm
 ```
-### Data Access:
+### Data Access
 
 #### Data Sources
-1. **National Parks Service API**: This project uses data from the National Parks Service API to fine-tune OpenAI GPT models.
-2. **National Parks Service: IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
+1. **National Parks Service API**: This chatbot uses data from the National Parks Service API to fine-tune OpenAI GPT models.
+2. **National Parks Service IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
 3. **OpenAI API**: The project also utilizes OpenAI models for which an API key will be needed.
 
 #### Accessing the Data
 ##### NPS IRMA
- 1. **Navigate to portal**: [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
- 2. **Set Query Parameters**
-    Select all on the following:
-    - Select Region(s)
-    - Select Park(s)
-    - Select Additional Field(s)
-    - Select Field Name(s)
-3. **Click View Report**
-4. **Download Data to CSV**
-5. **Save CSV to 05_nps_analysis  Folder**
+    1. **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
+    2. **Set query parameters**/
+        Select all on the following:
+        - Select Region(s)
+        - Select Park(s)
+        - Select Additional Field(s)
+        - Select Field Name(s)
+    3. **Click 'View Report'**
+    4. **Download data to CSV**
+    5. **Save CSV to 05_nps_analysis folder**
+
+    Additionally, the original data used to conduct the analysis can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
 
 ##### NPS API & OpenAI
-1. **Obtain API Keys**:
-   - **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
-   - **OpenAI API Key**: Sign up at [OpenAI API Platform](https://platform.openai.com/api-keys) to obtain your API key.
+    1. **Obtain API Keys**
+    - **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
+        - The 02_nps_api_data\02_nps_api_example_usage.ipynb file can be used to explore how to interact with the API.
+    - **OpenAI API Key**: Sign up at [OpenAI API Platform](https://platform.openai.com/api-keys) to obtain your API key.
 
-2. **Configuration**:
-   - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
-
-
-**Data Usage**:
-   - Ensure you comply with the terms of use for the NPS API and OpenAI API.
-   - Follow any data usage and privacy policies associated with the APIs.
+    2. **Update Environment Variables**
+    - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
 
 ### Repo Usage:
 
