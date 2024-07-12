@@ -47,15 +47,15 @@ python -m spacy download en_core_web_sm
 #### Local Park Pal Hosting:
 ```mermaid
 flowchart TD
-    A[02_nps_api_data] -->|Step 1| B[01_create_synthetic_data.ipynb]
-    B -->|Step 2| C[03_nps_models]
-    C -->|Step 2| D[02_gpt_endpoint_model.ipynb]
-    C -->|Step 2| E[03_gpt_parkcode_model.ipynb]
-    C -->|Step 2| F[04_gpt_intent_model.ipynb]
-    D -->|Step 3| G[04_nps_park_pal]
-    E -->|Step 3| G
-    F -->|Step 3| G
-    G -->|Step 3| H[06_post_park_pal.ipynb]
+    B[01_create_synthetic_data.ipynb]
+    B --> D[02_gpt_endpoint_model.ipynb]
+    B --> E[03_gpt_parkcode_model.ipynb]
+    B --> F[04_gpt_intent_model.ipynb]
+    G[06_post_park_pal.ipynb]
+    D --> G
+    E --> G
+    F --> G
+
 
     subgraph Folder1 [02_nps_api_data]
         B
@@ -68,7 +68,7 @@ flowchart TD
     end
 
     subgraph Folder3 [04_nps_park_pal]
-        H
+        HG
     end
 ```
 #### AWS Park Pal Hosting:
