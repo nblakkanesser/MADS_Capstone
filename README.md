@@ -1,9 +1,10 @@
-## Park Pal 🐻
+# Park Pal 🐻
 
 ### Table of Contents
 1. [Introduction](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#introduction)
 2. [Features](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#features)
 3. [Installation](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#installation)
+4. [Data Access](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#data-access)
 4. [Usage](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
 5. [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration)
 6. [Process Highlights](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#process-highlights)
@@ -11,7 +12,7 @@
 
 ### Introduction:
 
-Park Pal is an interactive chatbot backed by the National Park Service API. \
+Park Pal is an interactive chatbot backed by the National Park Service (NPS) API. \
 Park Pal can answer questions about parks, amenities, events, fees, and more.\
 Park Pal is hosted using AWS and can be accessed using the following link: [Insert Linke Here]\
 Using this repo, you can also host Park Pal locally.
@@ -40,8 +41,37 @@ pip install -r requirements.txt
 ```sh
 python -m spacy download en_core_web_sm
 ```
+### Data Access
 
-### Usage:
+Data Sources
+1. **National Parks Service API**: This chatbot uses data from the National Parks Service API to fine-tune OpenAI GPT models.
+2. **National Parks Service IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
+3. **OpenAI API**: The project also utilizes OpenAI models for which an API key will be needed.
+
+Accessing the Data
+- NPS IRMA
+    - **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
+    - **Set query parameters**/
+        Select all on the following:
+        - Select Region(s)
+        - Select Park(s)
+        - Select Additional Field(s)
+        - Select Field Name(s)
+    - **Click 'View Report'**
+    - **Download data to CSV**
+    - **Save CSV to 05_nps_analysis folder**
+    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
+
+- NPS API & OpenAI
+    - **Obtain API Keys**
+        - **NPS API Key**: Sign up at [NPS Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm) to receive your API key.
+            - The 02_nps_api_data\02_nps_api_example_usage.ipynb file can be used to explore how to interact with the API.
+        - **OpenAI API Key**: Sign up at [OpenAI API Platform](https://platform.openai.com/api-keys) to obtain your API key.
+
+    - **Update Environment Variables**
+        - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
+
+### Repo Usage:
 
 #### Local Park Pal Hosting:
 ```mermaid
