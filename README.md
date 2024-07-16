@@ -211,7 +211,7 @@ if __name__ == "__main__":
 
 ### Contributors
 
-1. Nicole Blakkan-Esser
+1. Nicole Blakkan-Esser: nblakkan@umich.edu
 2. Lauralyn Curry-Leech 
 3. Courtney Gibson: gibsonce@umich.edu
 
