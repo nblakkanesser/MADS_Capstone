@@ -5,8 +5,8 @@
 2. [Features](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#features)
 3. [Installation](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#installation)
 4. [Data Access](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#data-access)
-4. [Usage](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
 5. [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration)
+4. [Usage](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#usage)
 6. [Process Highlights](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#process-highlights)
 7. [Contributors](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#contributors)
 
@@ -70,12 +70,30 @@ Accessing the Data
     - **Update Environment Variables**
         - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
 
+
+### Configuration
+
+#### Environment Notebook Setup Procedure
+
+The notebooks in this repo use a custom environment function to set user specific values such as secrets, API keys, and folder paths. Users can add a env.py to the environment folder using the following structure to initialize their environment values. This notebook must be completed prior to running the code.
+
+```python
+def env():
+	dict = {'nps_api_key': '', # The users specific NPS API key. The key can be requested here: https://www.nps.gov/subjects/developer/get-started.htm
+		 'gpt_api_key': '', # The users specific OpenAI API key. The key can be requested here: https://platform.openai.com/api-keys
+		 'gpt_parkcode_model': '', # The OpenAI Job ID for the parkcode model fine tuned using the GPT Model notebooks.
+		 'gpt_endpoint_model': '', # The OpenAI Job ID for the endpoint model fine tuned using the GPT Model notebooks.
+		 'gpt_intent_model':'',# The OpenAI Job ID for the intent model fine tuned using the GPT Model notebooks.
+		 }
+	return dict
+```
+
 ### Repo Usage:
 
-Please review the 01_documentation folder an inventory of files and notebooks. 
+Please review the 01_documentation folder for an inventory of files and notebooks. 
 
 #### Local Park Pal Hosting:
-Run the notebooks in the following process flow to host the Park Pal on your local 8000 port.
+Run the notebooks using the following process flow to host the Park Pal on your local 8000 port.
 ```mermaid
 flowchart TD
     B[01_create_synthetic_data.ipynb]
@@ -104,23 +122,6 @@ flowchart TD
 ```
 #### AWS Park Pal Hosting:
 [INSERT PROCESS HERE]
-
-### Configuration
-
-#### Environment Notebook Setup Procedure
-
-The notebooks in this repo use a custom environment function to set user specific values such as secrets, API keys, and folder paths. Users can add a env.py to the environment folder using the following structure to initialize their environment values. This notebook must be completed prior to running the code.
-
-```python
-def env():
-	dict = {'nps_api_key': '', # The users specific NPS API key. The key can be requested here: https://www.nps.gov/subjects/developer/get-started.htm
-		 'gpt_api_key': '', # The users specific OpenAI API key. The key can be requested here: https://platform.openai.com/api-keys
-		 'gpt_parkcode_model': '', # The OpenAI Job ID for the parkcode model fine tuned using the GPT Model notebooks.
-		 'gpt_endpoint_model': '', # The OpenAI Job ID for the endpoint model fine tuned using the GPT Model notebooks.
-		 'gpt_intent_model':'',# The OpenAI Job ID for the intent model fine tuned using the GPT Model notebooks.
-		 }
-	return dict
-```
 
 ### Process Highlights:
 
