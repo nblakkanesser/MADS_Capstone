@@ -219,7 +219,7 @@ if __name__ == "__main__":
 ### Contributors
 
 1. Nicole Blakkan-Esser: nblakkan@umich.edu
-2. Lauralyn Curry-Leech 
+2. Lauralyn Curry-Leech: llcl@umich.edu
 3. Courtney Gibson: gibsonce@umich.edu
 
 Project Link - https://github.com/nblakkanesser/MADS_Capstone.git
