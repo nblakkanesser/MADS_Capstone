@@ -42,12 +42,12 @@ python -m spacy download en_core_web_sm
 ```
 ### Data Access
 
-Data Sources
+Resource Ownership
 1. **National Parks Service API**: This chatbot uses data from the National Parks Service API to fine-tune OpenAI GPT models.
 2. **National Parks Service IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
 3. **OpenAI API**: The project also utilizes OpenAI models for which an API key will be needed.
 
-Accessing the Data
+Accessing the Resources
 - NPS IRMA
     - **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
     - **Set query parameters**/
@@ -70,6 +70,12 @@ Accessing the Data
     - **Update Environment Variables**
         - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
 
+- Licensing Information
+    1. **National Parks Service Data**: 
+        - [NPS Licensing Statement](https://www.nps.gov/aboutus/disclaimer.htm)
+        - "Copyright law does not protect “any work of the U.S. Government” where “a work prepared by an officer or employee of the U.S. Government as part of that person's official duties” (See, 17 U.S.C. §§ 101, 105). Thus, material created by the NPS and presented on this website, unless otherwise indicated, is generally considered in the public domain. It may be distributed or copied as permitted by applicable law."
+        - Limits are placed on the number of API requests you may make using your API key.
+            - Hourly Limit: 1,000 requests per hour
 
 ### Configuration
 
