@@ -58,8 +58,8 @@ Accessing the Resources
         - Select Field Name(s)
     - **Click 'View Report'**
     - **Download data to CSV**
-    - **Save CSV to 05_nps_analysis folder**
-    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
+    - **Save CSV to 05_nps_evaluation folder**
+    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_evaluation folder at nps_visitations_2023.csv
 
 - NPS API & OpenAI
     - **Obtain API Keys**
@@ -103,13 +103,9 @@ Run the notebooks using the following process flow to host the Park Pal on your 
 ```mermaid
 flowchart TD
     B[01_create_synthetic_data.ipynb]
-    B --> D[02_gpt_endpoint_model.ipynb]
-    B --> E[03_gpt_parkcode_model.ipynb]
-    B --> F[04_gpt_intent_model.ipynb]
+    B --> D[03_finetune_gpt_models.ipynb]
     G[06_post_park_pal.ipynb]
     D --> G
-    E --> G
-    F --> G
 
 
     subgraph Folder1 [02_nps_api_data]
@@ -118,8 +114,6 @@ flowchart TD
 
     subgraph Folder2 [03_nps_models]
         D
-        E
-        F
     end
 
     subgraph Folder3 [04_nps_park_pal]
@@ -152,20 +146,20 @@ queries = ["Tell me about {entity}","Give me a description of {entity}","Describ
 ParkDesc = create_synthetic_queries(nps_api_key, entities = parks_combined, endpoint = "parks", intent = "description", queries = queries)
 ```
 
-#### 2. 03_nps_models/02_gpt_endpoint_model.ipynb & 03_gpt_parkcode_model.ipynb & 04_gpt_intent_model.ipynb
+#### 2. gpt_model_functions.py
 ##### Upload synthetic data to OpenAI
 ```python
 # Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
-  # Documentation: https://platform.openai.com/docs/api-reference/files/create
-train_file =  client.files.create(
-  file=open(train_data, "rb"),
-  purpose="fine-tune"
-)
+    # Documentation: https://platform.openai.com/docs/api-reference/files/create
+  train_file =  client.files.create(
+    file=open(f'{target}_train_data.jsonl', "rb"),
+    purpose="fine-tune"
+  )
 
-val_file = client.files.create(
-  file=open(val_data, "rb"),
-  purpose="fine-tune"
-)
+  val_file = client.files.create(
+    file=open(f'{target}_val_data.jsonl', "rb"),
+    purpose="fine-tune"
+  )
 
 # Retrieve file id to be used in fine tuning job
 train_file_id = train_file.id
@@ -175,7 +169,7 @@ val_file_id = val_file.id
 ##### Run fine-tuning job programmatically
 ```python
 # Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
-  # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
+    # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
 fine_tune = client.fine_tuning.jobs.create(
     # The Davinci model was selected for its performance as a completion model over using a chat model based on our use case.
     # We also tried using the gpt-3.5-turbo and we were unable to get the model to complete after an hour of training.
@@ -184,8 +178,8 @@ fine_tune = client.fine_tuning.jobs.create(
     training_file=train_file_id,
     validation_file=val_file_id,
     seed = 42,
-    suffix = model_name
-)
+    suffix = f'nps_model_{target}'
+    )
 # The fine tune id needs to be retained and set in the environment file to be used when calling the fine-tuned model.
 fine_tune_id = fine_tune.id
 ```
@@ -207,7 +201,7 @@ def chat():
 
     try:
         # Calls the OpenAI Fine-tuned GPT models (each run will charge the account)
-        output = nps_model_functions.api_call(user_input)
+        output = api_call(user_input)
     except:
         output = "I specialize only in queries related to amenities, events, alerts, park fees, park locations, and park descriptions. Please clarify your question."
     return jsonify({"response": output})
