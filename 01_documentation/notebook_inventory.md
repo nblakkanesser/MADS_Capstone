@@ -6,5 +6,5 @@
 | 6     | 03_nps_models        | 05_nltk_model            | NLP functions using NLTK to predict endpoint, intent, and parkcode based on a user query. ||
 | 7     | 03_nps_models        | 06_spacy_model           | NLP functions using spaCy to predict endpoint, intent, and parkcode based on a user query. ||
 | 8     | 04_nps_park_pal      | 07_post_park_pal         | Create a flask application to host Park Pal on the local 8000 port.           | 1. index.html <br> 2. gpt_model_functions            | A webpage hosted on your local 8000 port.                          |
-| 9     | 05_nps_analysis      | 07_nps_analysis          | Conduct analysis on NPS visitation data | 1. NPS_visitations_2023.csv         | 1. nps_monthly_visits.csv <br> 2. nps_yearly_visits.csv <br>3. nps_top_parks.csv|
+| 9     | 06_nps_evaluation      | 07_nps_analysis          | Conduct analysis on NPS visitation data | 1. NPS_visitations_2023.csv         | 1. nps_monthly_visits.csv <br> 2. nps_yearly_visits.csv <br>3. nps_top_parks.csv|
 | 10    | 06_nps_evaluation    | api_evaluation           | [INSERT INFORMATION HERE]               | 1. GPT Model: nps_model_intent <br> 2. GPT Model: nps_model_endpoint <br> 3. GPT Model: nps_model_parkcode  | [INSERT INFORMATION HERE]               |

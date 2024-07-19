@@ -2,7 +2,7 @@
 import sys
 sys.path.insert(0,'../')
 from environment import env
-from nps_model_functions import *
+from model_functions import *
 config = env.env()
 
 import gradio as gr

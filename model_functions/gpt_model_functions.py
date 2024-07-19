@@ -1,6 +1,5 @@
 import pandas as pd 
 import json
-import requests
 from openai import OpenAI
 from sklearn.model_selection import train_test_split
 
@@ -46,7 +45,7 @@ def split_synthetic_data(synthetic_queries_df,target):
     save_to_jsonl(val_df, f'{target}_val_data.jsonl', target)
 
 
-def train_model(target):
+def finetune_gpt_model(target):
   # Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
     # Documentation: https://platform.openai.com/docs/api-reference/files/create
   train_file =  client.files.create(
