@@ -58,8 +58,8 @@ Accessing the Resources
         - Select Field Name(s)
     - **Click 'View Report'**
     - **Download data to CSV**
-    - **Save CSV to 05_nps_analysis folder**
-    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
+    - **Save CSV to 05_nps_evaluation folder**
+    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_evaluation folder at nps_visitations_2023.csv
 
 - NPS API & OpenAI
     - **Obtain API Keys**
@@ -201,7 +201,7 @@ def chat():
 
     try:
         # Calls the OpenAI Fine-tuned GPT models (each run will charge the account)
-        output = nps_model_functions.api_call(user_input)
+        output = api_call(user_input)
     except:
         output = "I specialize only in queries related to amenities, events, alerts, park fees, park locations, and park descriptions. Please clarify your question."
     return jsonify({"response": output})
