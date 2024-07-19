@@ -24,7 +24,7 @@ def create_prompt_response(row, target):
                 'completion':f"{row['intent']}"}
     return dict
 
-def save_to_jsonl(dataframe, filename,target):
+def save_to_jsonl(dataframe, filename, target):
     """
     Writes record to json with correct GPT format
     * ChatGPT assisted in writing this function
@@ -35,7 +35,7 @@ def save_to_jsonl(dataframe, filename,target):
             json.dump(example, f)
             f.write('\n')
 
-def split_synthetic_data(dataframe,target):
+def split_synthetic_data(dataframe, target):
     """
     Performs training and validation data split then writes results to jsonl files for consumption by Open AI.
 
