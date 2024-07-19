@@ -35,17 +35,28 @@ def save_to_jsonl(dataframe, filename,target):
             json.dump(example, f)
             f.write('\n')
 
-def split_synthetic_data(synthetic_queries_df,target):
+def split_synthetic_data(dataframe,target):
+    """
+    Performs training and validation data split then writes results to jsonl files for consumption by Open AI.
+
+    df: The synthetic queries dataframe to be split into training and validation i.e. synthetic_queries_df
+    target: The column to tune the model to predict. (Intent, Parkcode, Endpoint)
+
+    """
     # Train/validation split
-    train_df, val_df = train_test_split(synthetic_queries_df, test_size=0.2, random_state=42)
+    train_df, val_df = train_test_split(dataframe, test_size=0.2, random_state=42)
     #print(len(train_df),len(val_df))
 
     # Saves training and validation data to json for ingestion by OpenAI GPT
     save_to_jsonl(train_df, f'{target}_train_data.jsonl', target)
     save_to_jsonl(val_df, f'{target}_val_data.jsonl', target)
 
-
 def finetune_gpt_model(target):
+  """
+  Saves synthetic data files to OpenAI portal and then fine-tunes the intended model based on the target parameter.
+
+  target: The column to tune the model to predict. (Intent, Parkcode, Endpoint)
+  """
   # Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
     # Documentation: https://platform.openai.com/docs/api-reference/files/create
   train_file =  client.files.create(
