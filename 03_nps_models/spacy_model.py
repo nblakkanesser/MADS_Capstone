@@ -74,9 +74,6 @@ class SpaCyModelFunctions:
         intent = self.predict_intent(query)
         park_code = self.get_park_code(query)
 
-        if park_code is None:
-            raise ValueError("Park not found in the query. Please provide a valid park name.")
-
         endpoint_mapping = {
             'description': 'parks',
             'address': 'parks',
