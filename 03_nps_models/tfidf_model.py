@@ -18,7 +18,7 @@ park_csv_path = '../02_nps_api_data/park_to_parkcode.csv'
 training_queries = '../02_nps_api_data/synthetic_queries.csv'
 
 # Outputs
-trained_model = 'tfidf_model.pkl'
+#trained_model = 'tfidf_model.pkl'
 
 
 #TFIDF MODEL DEFINITION
@@ -77,4 +77,4 @@ class TfidfClassifier:
 #Train and Store Model    
 tfidf_model = TfidfClassifier(config, park_csv_path)
 tfidf_model.fit(training_queries)
-pickle.dump(tfidf_model, open(trained_model, 'wb'))
+#pickle.dump(tfidf_model, open(trained_model, 'wb'))

@@ -53,7 +53,7 @@ def api_call(endpoint, parkcode, intent,parse = True):
 
 
 def get_context(query, model):
-    """Given a query and model, returns the parsed response from API call"""
+    """Given a query and model, returns the response from API call"""
     endpoint, parkcode, intent = model.get_params(query)
     response = api_call(endpoint, parkcode, intent)
     #context = parse_endpoint(endpoint, parkcode, intent, response)
