@@ -1,21 +1,28 @@
 #IMPORTS
 import pandas as pd
-import spacy
+import requests
 import pickle
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
 import sys
 sys.path.insert(0,'../')
 from environment import env
+config = env.env()
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
 
 #VARIABLES
-config = env.env()
-nlp = spacy.load("en_core_web_sm")
 api_base_url = 'https://developer.nps.gov/api/v1/'
 park_csv_path = '../02_nps_api_data/park_to_parkcode.csv'
-model_output = 'spacy_model.pkl'
 
 
-#SPACY MODEL DEFINITION
-class SpaCyModelFunctions:
+#NLTK CLASS DEFINITION
+class NLTKModelFunctions:
     def __init__(self, config, park_csv_path):
         self.config = config
         self.park_codes = self.load_park_codes(park_csv_path)
@@ -28,22 +35,27 @@ class SpaCyModelFunctions:
         """
         park_df = pd.read_csv(park_csv_path)
         park_codes = {}
+        lemmatizer = WordNetLemmatizer()
+        stop_words = set(stopwords.words('english'))
         
         for index, row in park_df.iterrows():
-            tokens = self.preprocess_text(row['fullName'].lower())
+            tokens = word_tokenize(row['fullName'].lower())
+            tokens = [lemmatizer.lemmatize(token) for token in tokens if token.isalpha() and token not in stop_words]
             normalized_park_name = ' '.join(tokens)
             park_codes[normalized_park_name] = row['parkCode']
         
         return park_codes
 
     def preprocess_text(self, text):
-        doc = nlp(text)
-        return [token.lemma_ for token in doc if token.is_alpha and not token.is_stop]
+        tokens = word_tokenize(text.lower())
+        stop_words = set(stopwords.words('english'))
+        tokens = [token for token in tokens if token.isalpha() and token not in stop_words]
+        lemmatizer = WordNetLemmatizer()
+        tokens = [lemmatizer.lemmatize(token) for token in tokens]
+        return ' '.join(tokens)
 
     def predict_intent(self, query):
-        tokens = self.preprocess_text(query.lower())
-        preprocessed_query = ' '.join(tokens)
-        
+        preprocessed_query = self.preprocess_text(query)
         if 'description' in preprocessed_query:
             return 'description'
         elif 'address' in preprocessed_query:
@@ -62,11 +74,14 @@ class SpaCyModelFunctions:
             return 'other'
 
     def get_park_code(self, query):
-        tokens = self.preprocess_text(query.lower())
-        preprocessed_query = ' '.join(tokens)
-        
+        preprocessed_query = self.preprocess_text(query)
+        lemmatizer = WordNetLemmatizer()
+        stop_words = set(stopwords.words('english'))
         for park_name, park_code in self.park_codes.items():
-            if park_name in preprocessed_query:
+            tokens = word_tokenize(park_name)
+            tokens = [lemmatizer.lemmatize(token) for token in tokens if token.isalpha() and token not in stop_words]
+            normalized_park_name = ' '.join(tokens)
+            if normalized_park_name in preprocessed_query:
                 return park_code
         return None
 
@@ -87,6 +102,6 @@ class SpaCyModelFunctions:
         endpoint = endpoint_mapping.get(intent, 'parks')
 
         return endpoint, park_code, intent
-    
-#SPACY MODEL PICKLE
-spacy_model_functions = SpaCyModelFunctions(config, park_csv_path)
+
+#NLTK MODEL
+nltk_model_functions = NLTKModelFunctions(config, park_csv_path)

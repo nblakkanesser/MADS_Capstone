@@ -77,4 +77,4 @@ class TfidfClassifier:
 #Train and Store Model    
 tfidf_model = TfidfClassifier(config, park_csv_path)
 tfidf_model.fit(training_queries)
-pickle.dump(tfidf_model, open(f'{trained_model}.pkl', 'wb'))
+pickle.dump(tfidf_model, open(trained_model, 'wb'))
