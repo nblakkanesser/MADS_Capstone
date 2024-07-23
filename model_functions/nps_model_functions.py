@@ -75,13 +75,6 @@ state_to_code = {
 # invert the dictionary
 code_to_state = dict(map(reversed, state_to_code.items()))
 
-def get_user_input(prompt):
-    #* Provided by ChatGPT
-    # Prompt the user for input
-    user_input = input(prompt)
-    # Return the user's input
-    return user_input
-
 def handle_query(query, model, client, max_tokens):
     """
     Uses a fine tuned model to interpret query into necessary API results based on the model parameter. 
@@ -209,56 +202,14 @@ def parse_endpoint(endpoint, parkcode, intent, responses):
                 output += f"\nEvent {index+1}: {row['title']} "
                 # List event location if included
                 if len(row['location']) > 0:
-                    output += f"\n Location: {row['location']}"
+                    output += f"\n          Location: {row['location']}"
         else:
             # When there are no events, return the following
             output = f'There are no event scheduled at {parkname} today' 
-    elif endpoint == 'amenities':
-        responses_df = pd.DataFrame(responses) 
-        # List the amenity categories for the user to review
-        categories = sorted(list(set(element for sublist in responses_df['categories'] for element in sublist)))
-        if len(categories) > 0:
-            cat_output = f'There are {len(categories)} amenity categories. Choose one of the following categories to learn more: '
-            for category in categories:
-                cat_output += f'\n {category}'
-        else:
-            cat_output = f'There are no amenities available at {parkname}' 
-
-        # Collect user input (Functionality will need to change with chatbot)
-        print(cat_output)
-        user_input = get_user_input(cat_output)
-        # Find all amenities in the specified category (Works with upper or lowercase)
-        amenities_df = responses_df[responses_df['categories'].apply(lambda x: user_input.lower() in [item.lower() for item in x])]
-        # Create list of amenities in category
-        amenities = sorted(list(set(name for name in amenities_df['name'])))
-        if len(amenities) > 0:
-            # List amenities
-            output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.title()} category. '
-            for amenity in amenities:
-                output += f'\n {amenity}'
-        # Trouble shoot if user input does not make sense (Functionality will need to change with chatbot)
-        else:
-            output = "The specified category is not an option. Please try again."
     else:
         output = pd.DataFrame(responses)   
     
     return output
-
-def create_url(query):
-    """
-    Use to create the url based on a user query
-    """
-
-    endpoint, parkcode, intent = get_params(query)
-    api_base_url = 'https://developer.nps.gov/api/v1/'
-    api_key = config['nps_api_key']
-        
-    if endpoint == 'fees':
-        endpoint = 'feespasses'
-
-    request = f'{api_base_url}{endpoint}?parkCode={parkcode}&api_key={api_key}'
-
-    return request, endpoint
 
 def api_call(query,parse = True):
     """
