@@ -42,12 +42,12 @@ python -m spacy download en_core_web_sm
 ```
 ### Data Access
 
-Data Sources
+Resource Ownership
 1. **National Parks Service API**: This chatbot uses data from the National Parks Service API to fine-tune OpenAI GPT models.
 2. **National Parks Service IRMA**: The NPS visitation data analysis was conducted using data from the NPS IRMA Portal.
 3. **OpenAI API**: The project also utilizes OpenAI models for which an API key will be needed.
 
-Accessing the Data
+Accessing the Resources
 - NPS IRMA
     - **Navigate to portal** [NPS IRMA Portal](https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year))
     - **Set query parameters**/
@@ -58,8 +58,8 @@ Accessing the Data
         - Select Field Name(s)
     - **Click 'View Report'**
     - **Download data to CSV**
-    - **Save CSV to 05_nps_analysis folder**
-    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_analysis folder at nps_visitations_2023.csv
+    - **Save CSV to 05_nps_evaluation folder**
+    - Additionally, the original data, used to conduct the analysis, can be found in the 05_nps_evaluation folder at nps_visitations_2023.csv
 
 - NPS API & OpenAI
     - **Obtain API Keys**
@@ -70,6 +70,12 @@ Accessing the Data
     - **Update Environment Variables**
         - Store your API keys in the `env.py` file by setting the appropriate environment variables to include your API keys. More information can be found in the [Configuration](https://github.com/nblakkanesser/MADS_Capstone/tree/main?tab=readme-ov-file#configuration) section.
 
+- Licensing Information
+    1. **National Parks Service Data**: 
+        - [NPS Licensing Statement](https://www.nps.gov/aboutus/disclaimer.htm)
+        - "Copyright law does not protect “any work of the U.S. Government” where “a work prepared by an officer or employee of the U.S. Government as part of that person's official duties” (See, 17 U.S.C. §§ 101, 105). Thus, material created by the NPS and presented on this website, unless otherwise indicated, is generally considered in the public domain. It may be distributed or copied as permitted by applicable law."
+        - Limits are placed on the number of API requests you may make using your API key.
+            - Hourly Limit: 1,000 requests per hour
 
 ### Configuration
 
@@ -97,13 +103,9 @@ Run the notebooks using the following process flow to host the Park Pal on your 
 ```mermaid
 flowchart TD
     B[01_create_synthetic_data.ipynb]
-    B --> D[02_gpt_endpoint_model.ipynb]
-    B --> E[03_gpt_parkcode_model.ipynb]
-    B --> F[04_gpt_intent_model.ipynb]
+    B --> D[03_finetune_gpt_models.ipynb]
     G[06_post_park_pal.ipynb]
     D --> G
-    E --> G
-    F --> G
 
 
     subgraph Folder1 [02_nps_api_data]
@@ -112,8 +114,6 @@ flowchart TD
 
     subgraph Folder2 [03_nps_models]
         D
-        E
-        F
     end
 
     subgraph Folder3 [04_nps_park_pal]
@@ -146,20 +146,20 @@ queries = ["Tell me about {entity}","Give me a description of {entity}","Describ
 ParkDesc = create_synthetic_queries(nps_api_key, entities = parks_combined, endpoint = "parks", intent = "description", queries = queries)
 ```
 
-#### 2. 03_nps_models/02_gpt_endpoint_model.ipynb & 03_gpt_parkcode_model.ipynb & 04_gpt_intent_model.ipynb
+#### 2. gpt_model_functions.py
 ##### Upload synthetic data to OpenAI
 ```python
 # Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
-  # Documentation: https://platform.openai.com/docs/api-reference/files/create
-train_file =  client.files.create(
-  file=open(train_data, "rb"),
-  purpose="fine-tune"
-)
+    # Documentation: https://platform.openai.com/docs/api-reference/files/create
+  train_file =  client.files.create(
+    file=open(f'{target}_train_data.jsonl', "rb"),
+    purpose="fine-tune"
+  )
 
-val_file = client.files.create(
-  file=open(val_data, "rb"),
-  purpose="fine-tune"
-)
+  val_file = client.files.create(
+    file=open(f'{target}_val_data.jsonl', "rb"),
+    purpose="fine-tune"
+  )
 
 # Retrieve file id to be used in fine tuning job
 train_file_id = train_file.id
@@ -169,7 +169,7 @@ val_file_id = val_file.id
 ##### Run fine-tuning job programmatically
 ```python
 # Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
-  # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
+    # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
 fine_tune = client.fine_tuning.jobs.create(
     # The Davinci model was selected for its performance as a completion model over using a chat model based on our use case.
     # We also tried using the gpt-3.5-turbo and we were unable to get the model to complete after an hour of training.
@@ -178,8 +178,8 @@ fine_tune = client.fine_tuning.jobs.create(
     training_file=train_file_id,
     validation_file=val_file_id,
     seed = 42,
-    suffix = model_name
-)
+    suffix = f'nps_model_{target}'
+    )
 # The fine tune id needs to be retained and set in the environment file to be used when calling the fine-tuned model.
 fine_tune_id = fine_tune.id
 ```
@@ -201,7 +201,7 @@ def chat():
 
     try:
         # Calls the OpenAI Fine-tuned GPT models (each run will charge the account)
-        output = nps_model_functions.api_call(user_input)
+        output = api_call(user_input)
     except:
         output = "I specialize only in queries related to amenities, events, alerts, park fees, park locations, and park descriptions. Please clarify your question."
     return jsonify({"response": output})
@@ -213,7 +213,7 @@ if __name__ == "__main__":
 ### Contributors
 
 1. Nicole Blakkan-Esser: nblakkan@umich.edu
-2. Lauralyn Curry-Leech 
+2. Lauralyn Curry-Leech: llcl@umich.edu
 3. Courtney Gibson: gibsonce@umich.edu
 
 Project Link - https://github.com/nblakkanesser/MADS_Capstone.git
