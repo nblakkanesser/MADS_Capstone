@@ -10,12 +10,9 @@ config = env.env()
 
 #VARIABLES
 api_base_url = 'https://developer.nps.gov/api/v1/'
-#park_csv_path = '../02_nps_api_data/park_to_parkcode.csv'
-#parkcode_to_park = pd.read_csv('../02_nps_api_data/parkcode_to_park.csv')
-#parkcode_to_park = dict(zip(parkcode_to_park['parkCode'], parkcode_to_park['fullName']))
 
 
-def api_call(endpoint, parkcode, intent,parse = True):
+def call_api(endpoint, parkcode, intent,parse = True):
     """
     Use to get all data from endpoint without specific processing
 
@@ -55,8 +52,7 @@ def api_call(endpoint, parkcode, intent,parse = True):
 def get_context(query, model):
     """Given a query and model, returns the response from API call"""
     endpoint, parkcode, intent = model.get_params(query)
-    response = api_call(endpoint, parkcode, intent)
-    #context = parse_endpoint(endpoint, parkcode, intent, response)
+    response = call_api(endpoint, parkcode, intent)
     
-    return response#context
+    return response
 

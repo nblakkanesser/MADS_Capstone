@@ -22,6 +22,7 @@ scikit-learn-extra==0.3.0
 
 #Chatbot
 flask==2.0.1
+Flask-Session==0.8.0
 langchain==0.1.0 
 langchain-openai==0.0.2 
 langchain-community==0.0.12 
