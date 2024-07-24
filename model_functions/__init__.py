@@ -2,6 +2,5 @@ from model_functions import helper_model_functions
 from model_functions import gpt_model_functions
 from model_functions import nltk_model
 from model_functions import non_gpt_model_functions
-from model_functions import spacy_model
 from model_functions import tfidf_model
 from model_functions import get_context
