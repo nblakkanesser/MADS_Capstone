@@ -1,90 +1,268 @@
 import pandas as pd 
 import json
+import requests
 from openai import OpenAI
-from sklearn.model_selection import train_test_split
+from datetime import datetime
 
 from environment import env
 config = env.env()
 
 api_base_url = 'https://developer.nps.gov/api/v1/'
-client = OpenAI(api_key  = config['gpt_api_key'])
+parkcode_to_park = pd.read_csv('../02_nps_api_data/parkcode_to_park.csv')
+parkcode_to_park = dict(zip(parkcode_to_park['parkCode'], parkcode_to_park['fullName']))
 
-def create_prompt_response(row, target):
+# * The mapping dictionary below was created by rogerallen and found at: https://gist.github.com/rogerallen/1583593
+state_to_code = {
+    "Alabama": "AL",
+    "Alaska": "AK",
+    "Arizona": "AZ",
+    "Arkansas": "AR",
+    "California": "CA",
+    "Colorado": "CO",
+    "Connecticut": "CT",
+    "Delaware": "DE",
+    "Florida": "FL",
+    "Georgia": "GA",
+    "Hawaii": "HI",
+    "Idaho": "ID",
+    "Illinois": "IL",
+    "Indiana": "IN",
+    "Iowa": "IA",
+    "Kansas": "KS",
+    "Kentucky": "KY",
+    "Louisiana": "LA",
+    "Maine": "ME",
+    "Maryland": "MD",
+    "Massachusetts": "MA",
+    "Michigan": "MI",
+    "Minnesota": "MN",
+    "Mississippi": "MS",
+    "Missouri": "MO",
+    "Montana": "MT",
+    "Nebraska": "NE",
+    "Nevada": "NV",
+    "New Hampshire": "NH",
+    "New Jersey": "NJ",
+    "New Mexico": "NM",
+    "New York": "NY",
+    "North Carolina": "NC",
+    "North Dakota": "ND",
+    "Ohio": "OH",
+    "Oklahoma": "OK",
+    "Oregon": "OR",
+    "Pennsylvania": "PA",
+    "Rhode Island": "RI",
+    "South Carolina": "SC",
+    "South Dakota": "SD",
+    "Tennessee": "TN",
+    "Texas": "TX",
+    "Utah": "UT",
+    "Vermont": "VT",
+    "Virginia": "VA",
+    "Washington": "WA",
+    "West Virginia": "WV",
+    "Wisconsin": "WI",
+    "Wyoming": "WY",
+    "District of Columbia": "DC",
+    "American Samoa": "AS",
+    "Guam": "GU",
+    "Northern Mariana Islands": "MP",
+    "Puerto Rico": "PR",
+    "United States Minor Outlying Islands": "UM",
+    "U.S. Virgin Islands": "VI",
+}
+    
+# invert the dictionary
+code_to_state = dict(map(reversed, state_to_code.items()))
+
+def handle_query(query, model, client, max_tokens):
     """
-    Parses the synthetic data into GPT format
+    Uses a fine tuned model to interpret query into necessary API results based on the model parameter. 
+
+    query (str): A user defined query.
+    model (str): The job id of the fine tuned GPT model. Can be found on the GPT fine tuning dashboard under 'Job ID' on the associated model.
+    client (obj): Authorization through API key to GPT console.
+    max_tokens (int): Number of tokens to limit response to. (Parameter is a misnomer as the response will try to fit 50 tokens if max is set to 50)
+    * Function was created using OpenAI fine-tuning documentation
+    https://platform.openai.com/docs/api-reference/fine-tuning
     """
-    if target == 'endpoint':
-        dict = {'prompt': row['query'],
-                'completion':f"endpoint: {row['api_call.endpoint']}"}
-    elif target == 'parkcode':
-        dict = {'prompt': row['query'],
-                'completion':f"parkcode: {row['api_call.parkCode']}"}
-    elif target == 'intent':
-        dict = {'prompt': row['query'],
-                'completion':f"{row['intent']}"}
-    return dict
+    prompt = f"prompt: {query}\n"
+    response = client.completions.create(
+        model=model,  
+        prompt=prompt,
+        max_tokens=max_tokens
+    )
+    completion = response.choices[0].text
+    return completion
 
-def save_to_jsonl(dataframe, filename, target):
+def get_params(query):
     """
-    Writes record to json with correct GPT format
-    * ChatGPT assisted in writing this function
+    Function to use finetuned model to find endpoint and parkcode for an API call on a specific query.
+
+    query (str): A user defined query.
     """
-    with open(filename, 'w') as f:
-        for _, row in dataframe.iterrows():
-            example = create_prompt_response(row,target)
-            json.dump(example, f)
-            f.write('\n')
+    # Define input variables
+    client = OpenAI(api_key  = config['gpt_api_key'])
+    gpt_parkcode_model = config['gpt_parkcode_model']
+    gpt_endpoint_model = config['gpt_endpoint_model']
+    gpt_intent_model = config['gpt_intent_model']
+    intents = ['description','address','state','fullname','alerts','amenities','events','feespass']
 
-def split_synthetic_data(dataframe, target):
+    # Load models from OpenAI
+    parkcode_model = client.fine_tuning.jobs.retrieve(gpt_parkcode_model).fine_tuned_model
+    endpoint_model = client.fine_tuning.jobs.retrieve(gpt_endpoint_model).fine_tuned_model
+    intent_model = client.fine_tuning.jobs.retrieve(gpt_intent_model).fine_tuned_model
+
+    # Predict endpoint and parkcode
+    max_tokens = 3
+    endpoint = handle_query(query,endpoint_model,client,max_tokens).replace('endpoint: ','')
+    max_tokens = 5
+    parkcode = handle_query(query,parkcode_model,client,max_tokens).replace('parkcode: ','')[:4]
+    max_tokens = 1
+    #The intents dont have a uniform number of tokens and this was my solution (I'd like to improve this logic)
+    if handle_query(query,intent_model,client,max_tokens) in intents:
+        intent = handle_query(query,intent_model,client,max_tokens)
+    elif handle_query(query,intent_model,client,2) in intents:
+        intent = handle_query(query,intent_model,client,2)
+    elif handle_query(query,intent_model,client,3) in intents:
+        intent = handle_query(query,intent_model,client,3)
+
+    return endpoint, parkcode, intent
+
+def parse_endpoint(endpoint, parkcode, intent, responses):
+    parkname = parkcode_to_park[parkcode]
+    # Parse responses into appropriate output
+    if endpoint == 'parks':
+        # The address field of the parks endpoint comes in as a dictionary and the three lines below normalize the data into separate columns.
+        temp_df = pd.DataFrame(responses[0])    
+        addresses_df = pd.json_normalize(temp_df['addresses'])
+        responses_df = pd.concat([temp_df.drop(columns=['addresses']), addresses_df], axis=1) 
+
+        # Map state code to state name
+        state_name = code_to_state[responses_df['state'][0]]
+
+        # Answers question: which state is the park in?
+        if intent == 'state':
+            output = f"{responses_df['fullName'][0]} is located in {state_name}"
+        # Answers question: what is the park address?
+        if intent == 'address':
+            output = f"{responses_df['fullName'][0]} is located at {responses_df['line1'][0]} " + (f"{responses_df['line2'][0]} " if responses_df['line2'][0] else "") + f"in {responses_df['city'][0]}, {state_name} {responses_df['postalCode'][0]}"
+        # Answers question: what is the description of the park?
+        if intent == 'description':
+            output = f"Here is the description of {parkname}: {responses_df['description'][0]} "
+        # Answers question: what is the full name of the park?
+        if intent == 'fullname':
+            output = f"{parkname} is the full name of the park."
+      
+    elif endpoint == 'feespasses':
+        responses_df = pd.DataFrame(responses) 
+
+        fee_desc = responses_df['entranceFeeDescription'][0]
+        # If a fee description exists, start by printing the description
+        if len(fee_desc)>0 & responses_df['isFeeFreePark'][0]:
+            output = fee_desc
+
+            # Explain if the park is cashless or not
+            url = responses_df['feesAtWorkUrl'][0]
+            cash = responses_df['cashless'][0]
+            if cash == 'Yes':
+                output += f'\nCash is not accepted at {parkname}.'
+            else: 
+                output += f'\nCash is accepted at {parkname}.'
+            
+            # If a URL is provided, include it in the output
+            if len(url)>0:
+                output += f'\nPlease visit {url} for more information.'
+        # If fee free park flag is false, explain that there are no fees for the park.       
+        elif responses_df['isFeeFreePark'][0]  == False: 
+            output = f'There are no enterance fees for {parkname}'
+
+    elif endpoint == 'alerts':
+        # The alerts endpoint is straight forward but there may be multiple alerts so this function returns a count of the active alerts and then lists the alerts. 
+        responses_df = pd.DataFrame(responses) 
+        if len(responses_df) > 0:
+            output = f'There {"is" if len(responses_df) == 1 else "are"} {len(responses_df)} active {"alert" if len(responses_df) == 1 else "alerts"} for {parkname}. \n '
+            # List each alert
+            for index, row in responses_df.iterrows():
+                output += f"• {row['description']}\n "
+        else:
+            # When there are no active alerts return the following:
+            output = f'There are no active alerts for {parkname}'
+    
+    elif endpoint == 'events':
+        temp_df = pd.DataFrame(responses)   
+        # Filter dataframe for a date (Currently set to today, but this could be made dynamic in the future)
+        responses_df = temp_df[temp_df['date'] == datetime.now().strftime('%Y-%m-%d')]
+        events = len(responses_df)
+        if events > 0:
+            # Count events 
+            output = f'Today, there {"is" if events == 1 else "are"} {events} {"event" if events == 1 else "events"} happening at {parkname}.'
+            for index, row in responses_df.iterrows():
+                # List each event
+                output += f"\nEvent {index+1}: {row['title']} "
+                # List event location if included
+                if len(row['location']) > 0:
+                    output += f"\n          Location: {row['location']}"
+        else:
+            # When there are no events, return the following
+            output = f'There are no event scheduled at {parkname} today' 
+    else:
+        output = pd.DataFrame(responses)   
+    
+    return output
+
+def api_call(query,parse = True):
     """
-    Performs training and validation data split then writes results to jsonl files for consumption by Open AI.
+    Use to get all data from endpoint without specific processing
 
-    df: The synthetic queries dataframe to be split into training and validation i.e. synthetic_queries_df
-    target: The column to tune the model to predict. (Intent, Parkcode, Endpoint)
-
+    query: A user query.
+    parse: Whether or not to call the parse_endpoint function. 
+    * ChatGPT was used to create the pagination process for parsing the API data.
     """
-    # Train/validation split
-    train_df, val_df = train_test_split(dataframe, test_size=0.2, random_state=42)
-    #print(len(train_df),len(val_df))
 
-    # Saves training and validation data to json for ingestion by OpenAI GPT
-    save_to_jsonl(train_df, f'{target}_train_data.jsonl', target)
-    save_to_jsonl(val_df, f'{target}_val_data.jsonl', target)
+    endpoint, parkcode, intent = get_params(query)
+    responses = []
+    limit = 50  # Number of results per page, maximum allowed by NPS API
+    start = 0   # Initial starting point for pagination
+    
+    while True:
+        params = {'api_key': config['nps_api_key'],
+                  'parkCode': parkcode,
+                  'limit' : limit,
+                  'start' : start,
+                }
+        
+        if endpoint == 'fees':
+            endpoint = 'feespasses'
+        request = requests.get(f"{api_base_url}{endpoint}", params=params)
+        request_data = request.json()
 
-def finetune_gpt_model(target):
-  """
-  Saves synthetic data files to OpenAI portal and then fine-tunes the intended model based on the target parameter.
+        # Limit park data to necessary fields
+        if endpoint == 'parks':
+            responses.extend([
+                {
+                    'fullName': park['fullName'],
+                    'parkCode': park['parkCode'],
+                    'state': park['states'],
+                    'addresses': park.get('addresses', []),
+                    'description': park['description']
+                } for park in request_data['data']
+            ])
+        else:
+            for record in request_data['data']:
+                responses.extend([record])
+        
+        # Move to the next page
+        start += limit
+        
+        # Break the loop if all responses have been retrieved
+        if int(start) >= int(request_data['total']):
+            break
 
-  target: The column to tune the model to predict. (Intent, Parkcode, Endpoint)
-  """
-  # Upload a file that can be used across various endpoints. Individual files can be up to 512 MB, and the size of all files uploaded by one organization can be up to 100 GB.
-    # Documentation: https://platform.openai.com/docs/api-reference/files/create
-  train_file =  client.files.create(
-    file=open(f'{target}_train_data.jsonl', "rb"),
-    purpose="fine-tune"
-  )
+    if parse == True:
+        output = parse_endpoint(endpoint, parkcode, intent, responses)
+    else:
+        output = responses
 
-  val_file = client.files.create(
-    file=open(f'{target}_val_data.jsonl', "rb"),
-    purpose="fine-tune"
-  )
+    return output
 
-  # Retrieve file id to be used in fine tuning job
-  train_file_id = train_file.id
-  val_file_id = val_file.id
-
-  # Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
-    # Documentation: https://platform.openai.com/docs/api-reference/fine-tuning/create
-  fine_tune = client.fine_tuning.jobs.create(
-    # The Davinci model was selected for its performance as a completion model over using a chat model based on our use case.
-    # We also tried using the gpt-3.5-turbo and we were unable to get the model to complete after an hour of training.
-    # Conversely, the davinci model averaged a 20 minute training period.
-    model="davinci-002",
-    training_file=train_file_id,
-    validation_file=val_file_id,
-    seed = 42,
-    suffix = f'nps_model_{target}'
-  )
-  # The fine tune id needs to be retained and set in the environment file to be used when calling the fine-tuned model.
-  fine_tune_id = fine_tune.id
-  return fine_tune_id

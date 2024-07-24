@@ -17,3 +17,4 @@ ragas
 spacy
 statsmodels
 geopandas
+nltk

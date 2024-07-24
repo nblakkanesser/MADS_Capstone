@@ -2,7 +2,7 @@
 import sys
 sys.path.insert(0,'../')
 from environment import env
-from model_functions.nps_model_functions import *
+from model_functions.gpt_model_functions import *
 config = env.env()
 
 from flask import Flask, request, jsonify, render_template
