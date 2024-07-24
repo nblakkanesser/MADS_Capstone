@@ -17,6 +17,6 @@
 | 15    | 05_nps_analysis     | nps_top_parks.csv                   | Top 10 National Parks by visits in 2023                                  |
 | 16    | 05_nps_analysis     | nps_visitations_2023.csv            | Data collected from https://irma.nps.gov/Portal/                         |
 | 17    | 05_nps_analysis     | nps_yearly_visits.csv               | 2023 yearly visit data by region                                         |
-| 18    | nps_model_functions | gpt_model_functions.py              | Prepare synthetic data for GPT consumption and fine-tune models          |
-| 19    | nps_model_functions | gpt_model_functions.py              | Use GPT model to make API calls provided a user query                    |
+| 18    | nps_model_functions | helper_model_functions.py              | Prepare synthetic data for GPT consumption and fine-tune models          |
+| 19    | nps_model_functions | helper_model_functions.py              | Use GPT model to make API calls provided a user query                    |
 | 20    | 04_nps_park_pal     | templates/index.html                | Includes the code to create a simple web-based chat interface for the "National Parks Chatbot: Park Pal."           |
