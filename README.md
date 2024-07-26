@@ -14,8 +14,7 @@
 
 - Park Pal is an interactive chatbot backed by the National Park Service (NPS) API. 
 - Park Pal can answer questions about parks, amenities, events, fees, and more.
-- Park Pal is hosted using AWS and can be accessed using the following link: [Insert Linke Here]
-- Using this repo, you can also host Park Pal locally.
+- Park Pal is hosted locally using Flask and can be accessed in one step by running the 06_lang_park_pal notebook.
 
 ### Features:
 - Comprehensive Park Information: Access detailed information about all national parks, including descriptions, events, and amenities.
@@ -98,13 +97,13 @@ def env():
 
 Please review the 01_documentation folder for an inventory of files and notebooks. 
 
-#### Local Park Pal Hosting:
-Run the notebooks using the following process flow to host the Park Pal on your local 8000 port.
+#### GPT Park Pal Hosting:
+Run the notebooks using the following process flow to host the GPT enabled Park Pal on your local 8000 port.
 ```mermaid
 flowchart TD
     B[01_create_synthetic_data.ipynb]
     B --> D[03_finetune_gpt_models.ipynb]
-    G[06_post_park_pal.ipynb]
+    G[05_gpt_park_pal.ipynb]
     D --> G
 
 
@@ -116,11 +115,11 @@ flowchart TD
         D
     end
 
-    subgraph Folder3 [04_nps_park_pal]
+    subgraph Folder3 [05_nps_park_pal]
         G
     end
 ```
-#### AWS Park Pal Hosting:
+#### LangChain Park Pal Hosting:
 [INSERT PROCESS HERE]
 
 ### Process Highlights:
@@ -189,22 +188,81 @@ fine_tune_id = fine_tune.id
 ```python
 app = Flask(__name__)
 
+# Configure server-side session
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SECRET_KEY'] = 'supersecretkey'
+Session(app)
+
+@app.route('/reset', methods=['POST'])
+def reset():
+    session.clear()
+    return jsonify({"response": "Session reset successful."})
+
 @app.route('/')
 def home():
     return render_template('index.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
+    # *Chat GPT assisted with session logic
     user_input = request.json.get("message")
     if not user_input:
         return jsonify({"response": "Please provide a message."})
 
-    try:
-        # Calls the OpenAI Fine-tuned GPT models (each run will charge the account)
-        output = api_call(user_input)
-    except:
+    if 'stage' not in session:
+        session['stage'] = 'initial'
+
+    if session['stage'] == 'initial':
+        # Initial stage: Handle general queries
+        output, session['stage'], session['data'] = handle_initial_query(user_input)
+        
+    elif session['stage'] == 'amenities':
+        # Handle amenity category selection
+        output, session['stage'] = handle_amenity_selection(user_input, session['data'])
+    else:
         output = "I specialize only in queries related to amenities, events, alerts, park fees, park locations, and park descriptions. Please clarify your question."
+        session['stage'] = 'initial'
+
     return jsonify({"response": output})
+
+def handle_initial_query(user_input):
+    # Simulate API call to get responses for the 'amenities' endpoint
+    try: 
+        output = api_call(user_input)
+        if isinstance(output, pd.DataFrame):
+            # The nps_model_function returns a dataframe for questions that are predicted to be amenities.
+            responses_df = output
+            # List the amenity categories for the user to review
+            categories = sorted(list(set(element.lower() for sublist in responses_df['categories'] for element in sublist)))
+            if len(categories) > 0:
+                # Count of categories and list them
+                response = f'There are {len(categories)} amenity categories. Choose one of the following categories to learn more: '
+                for category in categories:
+                    response += f'\n {category}'
+
+                return response, 'amenities', responses_df
+            else:
+                # If there are no categories then return this:
+                return f'There are no amenities available to share at this time', 'initial', None
+        return output, 'initial', None
+    # If the bot does not understand the question, ask to clarify.
+    except:
+        return "I specialize only in queries related to amenities, events, alerts, park fees, park locations, and park descriptions. Please clarify your question.", 'initial', None
+
+def handle_amenity_selection(user_input, responses_df):
+    # Create list of amenities in the specified category
+    amenities_df = responses_df[responses_df['categories'].apply(lambda x: user_input.lower() in [item.lower() for item in x])]
+    amenities = sorted(list(set(name for name in amenities_df['name'])))
+    
+    if len(amenities) > 0:
+        # Count of amenities and list them
+        output = f'There {"is" if len(amenities) == 1 else "are"} {len(amenities)} {"amenity" if len(amenities) == 1 else "amenities"} in the {user_input.title()} category: '
+        for amenity in amenities:
+            output += f'\n {amenity}'
+        return output, 'initial'
+    else:
+        # If there are no amenity then return this:
+        return "The specified category is not an option. Please try again.", 'initial'
 
 if __name__ == "__main__":
     app.run(port=8000)
