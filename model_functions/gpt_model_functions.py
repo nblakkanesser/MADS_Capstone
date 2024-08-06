@@ -126,6 +126,8 @@ def get_params(query):
         intent = handle_query(query,intent_model,client,2)
     elif handle_query(query,intent_model,client,3) in intents:
         intent = handle_query(query,intent_model,client,3)
+    else:
+        intent = 'error'
 
     return endpoint, parkcode, intent
 

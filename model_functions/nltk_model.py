@@ -104,4 +104,4 @@ class NLTKModelFunctions:
         return endpoint, park_code, intent
 
 #NLTK MODEL
-nltk_model_functions = NLTKModelFunctions(config, park_csv_path)
+nltk_model = NLTKModelFunctions(config, park_csv_path)
