@@ -119,8 +119,6 @@ flowchart TD
         G
     end
 ```
-#### LangChain Park Pal Hosting:
-[INSERT PROCESS HERE]
 
 ### Process Highlights:
 
