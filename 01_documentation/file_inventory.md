@@ -31,5 +31,5 @@ chat model     |
 | 25    | model_functions     | gnb_model.py                        | GNB Model functions                    |
 | 26    | model_functions     | gpt_model_functions.py              | Use GPT model to make API calls provided a user query                    |
 | 27    | model_functions     | helper_model_functions.py           | Prepare synthetic data for GPT consumption and fine-tune models          |
-| 28    | model_functions     | nltk_model.py                       | NLTK Functions                     |
-| 29    | model_functions     | spacy_model.py                      | Spacy Functions                      |
+| 28    | model_functions     | nltk_model.py                       | NLTK Functions for API calling                     |
+| 29    | model_functions     | spacy_model.py                      | Spacy Functions fpr API calling                      |

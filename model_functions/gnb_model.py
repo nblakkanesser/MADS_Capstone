@@ -20,8 +20,8 @@ training_queries = '../02_nps_api_data/synthetic_queries.csv'
 #trained_model = 'tfidf_model.pkl'
 
 
-#TFIDF MODEL DEFINITION
-class TfidfClassifier:
+#GNB + TFIDF MODEL DEFINITION
+class GNBClassifier:
     def __init__(self, config, park_csv_path):
         self.config = config
         self.intent_clf = GaussianNB()
@@ -73,5 +73,5 @@ class TfidfClassifier:
         return endpoint, parkcode[0], intent[0]
     
 #Train Model   
-tfidf_model = TfidfClassifier(config, park_csv_path)
-tfidf_model.fit(training_queries)
+gnb_model = GNBClassifier(config, park_csv_path)
+gnb_model.fit(training_queries)
