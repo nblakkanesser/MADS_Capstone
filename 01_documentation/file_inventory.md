@@ -17,13 +17,19 @@
 | 15    | 03_nps_models       | intent_val_data.jsonl               | Validation prompt and completion data for fine-tuning GPT intent model   |
 | 16    | 03_nps_models       | parkcode_train_data.jsonl           | Training prompt and completion data for fine-tuning GPT parkcode model   |
 | 17    | 03_nps_models       | parkcode_val_data.jsonl             | Validation prompt and completion data for fine-tuning GPT parkcode model |
-| 18    | 03_nps_models       | tfidf_model.pkl                     | The TF-IDF model trained on the synthetic data                           |
-| 20    | 04_nps_evaluation   | test_data.pkl                       | Test data for evaluating API calling models                      |
-| 21    | 05_nps_park_pal     | templates/index.html                | Includes the code to create a simple web-based chat interface for the "National Parks Chatbot: Park Pal."  |
-| 24    | model_functions     | get_context.py                      |                      |
-| 25    | model_functions     | gpt_model_functions.py              | Use GPT model to make API calls provided a user query                    |
-| 26    | model_functions     | helper_model_functions.py           | Prepare synthetic data for GPT consumption and fine-tune models          |
-| 27    | model_functions     | nltk_model.py                       |                      |
-| 28    | model_functions     | non_gpt_model_functions.py          |                      |
-| 29    | model_functions     | spacy_model.py                      |                       |
-| 30    | model_functions     | tfidf_model.py                      |                     |
+| 18    | 04_nps_evaluation   | test_data.pkl                       | Test data for evaluating API 
+calling     |
+| 19    | 04_nps_evaluation   | times.pkl                           | Model run times from test data for evaluating API 
+calling     |
+| 20    | 05_nps_park_pal     | templates/index.html                | Includes the code to create a simple web-based chat    interface for the "National Parks Chatbot: Park Pal."  |
+| 21    | 06_park_pal_evaluation     | chat_test.pkl                | Test data for evaluating LangChain Chat 
+model |
+| 22    | 06_park_pal_evaluation     | chat_times.pkl               | Model run times from test data for evaluating LangChain chat model     | 
+| 23    | 06_park_pal_evaluation     | similarity.pkl               | Answer similarities from test data for evaluating LangChain
+chat model     |
+| 24    | model_functions     | get_context.py                      | Use LangChain model to get context and make API calls provided with a user query                     |
+| 25    | model_functions     | gnb_model.py                        | GNB Model functions                    |
+| 26    | model_functions     | gpt_model_functions.py              | Use GPT model to make API calls provided a user query                    |
+| 27    | model_functions     | helper_model_functions.py           | Prepare synthetic data for GPT consumption and fine-tune models          |
+| 28    | model_functions     | nltk_model.py                       | NLTK Functions                     |
+| 29    | model_functions     | spacy_model.py                      | Spacy Functions                      |
