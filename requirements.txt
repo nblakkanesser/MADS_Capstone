@@ -28,5 +28,8 @@ langchain-openai==0.0.2
 langchain-community==0.0.12 
 langchainhub==0.1.14
 
-
-ragas
+#LangChain Eval
+#Specific versions needed to run Ragas - different from needed for LangChain and OpenAI parts
+#langchain-openai==0.0.2
+#langchain-core==0.1.45
+ragas==0.1.10

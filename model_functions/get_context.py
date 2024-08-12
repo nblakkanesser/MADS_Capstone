@@ -162,7 +162,7 @@ def parsed_context(endpoint, parkcode, intent):
 
     return context
 
-'''def api_call_test(endpoint, parkcode, intent,parse = True):
+def api_call_test(endpoint, parkcode, intent,parse = True):
     """
     Use to get all data from endpoint without specific processing
 
@@ -210,4 +210,4 @@ def parsed_context(endpoint, parkcode, intent):
             break
 
 
-    return responses'''
+    return responses
