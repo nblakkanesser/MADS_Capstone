@@ -120,6 +120,22 @@ flowchart TD
     end
 ```
 
+#### LangChain Park Pal Hosting:
+Run the notebooks using the following process flow to host the LangChain enabled Park Pal on your local 8000 port.
+```mermaid
+flowchart TD
+    B[01_create_synthetic_data.ipynb]
+    B --> D[06_lang_park_pal.ipynb]
+
+    subgraph Folder1 [02_nps_api_data]
+        B
+    end
+
+    subgraph Folder2 [05_nps_park_pal]
+        D
+    end
+```
+
 ### Process Highlights:
 
 #### 1. 02_nps_api_data/01_create_synthetic_data.ipynb
