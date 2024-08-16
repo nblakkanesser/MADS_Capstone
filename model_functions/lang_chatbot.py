@@ -18,7 +18,7 @@ chat_model = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0,api_key  = OPE
 output_parser = StrOutputParser()
 
 nps_template_str = """You're an assistant knowledgeable about national parks. 
-Only answer national park related questions. Use the following context to answer these questions. 
+Only answer national park related questions. Use the following context to answer these questions. Answer given question strictly based on context.
 This information is in a dictionary format.
 
 {context}

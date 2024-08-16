@@ -3,7 +3,6 @@ import pandas as pd
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-import pickle
 import sys
 sys.path.insert(0,'../')
 from environment import env
@@ -21,8 +20,8 @@ training_queries = '../02_nps_api_data/synthetic_queries.csv'
 #trained_model = 'tfidf_model.pkl'
 
 
-#TFIDF MODEL DEFINITION
-class TfidfClassifier:
+#GNB + TFIDF MODEL DEFINITION
+class GNBClassifier:
     def __init__(self, config, park_csv_path):
         self.config = config
         self.intent_clf = GaussianNB()
@@ -53,7 +52,6 @@ class TfidfClassifier:
         """Given a query input, uses intent_clf and parkcode_clf to predict
             intent and parkcode of query, and corresponting api endpoint
         """
-        
         intent_vec = self.intent_vectorizer.transform([query]).toarray()
         parkcode_vec = self.parkcode_vectorizer.transform([query]).toarray()
 
@@ -74,7 +72,6 @@ class TfidfClassifier:
 
         return endpoint, parkcode[0], intent[0]
     
-#Train and Store Model    
-tfidf_model = TfidfClassifier(config, park_csv_path)
-tfidf_model.fit(training_queries)
-#pickle.dump(tfidf_model, open(trained_model, 'wb'))
+#Train Model   
+gnb_model = GNBClassifier(config, park_csv_path)
+gnb_model.fit(training_queries)

@@ -1,7 +1,6 @@
 import pandas as pd 
 import json
 import requests
-from openai import OpenAI
 from datetime import datetime
 
 from environment import env
@@ -74,26 +73,6 @@ state_to_code = {
     
 # invert the dictionary
 code_to_state = dict(map(reversed, state_to_code.items()))
-
-def handle_query(query, model, client, max_tokens):
-    """
-    Uses a fine tuned model to interpret query into necessary API results based on the model parameter. 
-
-    query (str): A user defined query.
-    model (str): The job id of the fine tuned GPT model. Can be found on the GPT fine tuning dashboard under 'Job ID' on the associated model.
-    client (obj): Authorization through API key to GPT console.
-    max_tokens (int): Number of tokens to limit response to. (Parameter is a misnomer as the response will try to fit 50 tokens if max is set to 50)
-    * Function was created using OpenAI fine-tuning documentation
-    https://platform.openai.com/docs/api-reference/fine-tuning
-    """
-    prompt = f"prompt: {query}\n"
-    response = client.completions.create(
-        model=model,  
-        prompt=prompt,
-        max_tokens=max_tokens
-    )
-    completion = response.choices[0].text
-    return completion
 
 def get_params(query):
     """
